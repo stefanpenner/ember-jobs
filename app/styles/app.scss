@@ -1,0 +1,64 @@
+@charset 'utf-8';
+
+
+////////////
+
+@import 'variables';
+
+/////
+.master {
+  float: left;
+  width: 400px;
+}
+
+.detail {
+  float: left;
+  width: 600px;
+}
+
+body {
+  margin: 0;
+  background-color: $background-color;
+}
+
+h1 {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  margin: 0;
+  font-size: 16px;
+}
+
+
+.nav {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left:0;
+  height: 50px;
+  background: url('/navigation_background.jpg');
+  background-repeat: repeat-x;
+  padding: 0 100px;
+  width: 100%;
+  box-shadow: 0 2px 8px $shadow-gray;
+  color: white;
+
+  .nav-left {
+    position:absolute;
+    left: 60px;
+
+    img#logo {
+      height: 30px;
+      margin-top: 10px;
+    }
+  }
+
+  .nav-center {
+    text-align: center;
+  }
+
+  .nav-right {
+    position: absolute;
+    right: 60px;
+  }
+}
+
