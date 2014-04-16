@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
    var filtered = this.get('filtered');
    var result;
 
-   if (Ember.isBlank(query) && Ember.isBlank(type) || type === "undefined") {
+   if (Ember.isBlank(query) && Ember.isBlank(type)) {
       result = model.toArray();
    } else {
      result = model.filter(function(job) {
