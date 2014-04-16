@@ -60,7 +60,8 @@ var legacyFilesToAppend = [
   'ember-data.js',
   'app-shims.js',
   'ember-resolver.js',
-  'ember-load-initializers.js'
+  'ember-load-initializers.js',
+  'emberfire.js'
 ];
 
 var applicationJs = preprocessJs(appAndDependencies, '/', prefix);
@@ -154,7 +155,7 @@ if (env !== 'production') {
   var legacyTestFilesToAppend = [
     'qunit/qunit/qunit.js',
     'test-shims.js',
-    'ember-qunit/dist/named-amd/main.js'
+    'ember-qunit/dist/named-amd/main.js',
   ];
 
   testsJs = compileES6(testsJs, {
