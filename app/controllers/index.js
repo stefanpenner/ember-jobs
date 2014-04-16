@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
    var filtered = this.get('filtered');
    var result;
 
-   if (Ember.isBlank(query) && Ember.isBlank(type)) {
+   if (Ember.isBlank(query) && Ember.isBlank(type) || type === "undefined") {
       result = model.toArray();
    } else {
      result = model.filter(function(job) {
@@ -47,10 +47,5 @@ export default Ember.Controller.extend({
  },
  _filtered: function() {
     Ember.run.once(this, this._filter);
- }.observes('model.@each.{title,description,type,location,company.name}','type','search').on('init'),
- type: Ember.computed(function(key, value) {
-    if (arguments.length === 2) {
-      return value === undefined ? null : value;
-    }
-  })
+ }.observes('model.@each.{title,description,type,location,company.name}','type','search').on('init')
 });
