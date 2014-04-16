@@ -163,7 +163,21 @@ div.job-posting.full {
       margin: 6px auto;
     }
     .footer {
+      text-align: center;
+      height: 50px;
       border-top: 1px solid $light-gray;
+      button {
+        height: 38px;
+        margin-top: 6px;
+        font-size: 13px;
+
+        img {
+          height: 15px;
+          position: relative;
+          top: 2px;
+          margin-right: 5px;
+        }
+      }
     }
   }
 }
