@@ -1,5 +1,5 @@
 export default Ember.Controller.extend({
-  needs: ['session'],
+  needs: ['sesssion'],
   isAdmin: Ember.computed.readOnly('controllers.session.isAdmin'),
   queryParams: [
     'type',
