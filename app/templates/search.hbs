@@ -1,4 +1,12 @@
-{{input value=search id='search-field' placeholder="Search jobs, companies or locations"}} |
+<div class="card search-container">
+  <div class='search-left'>
+    <img src="search.png" alt="Q">
+  </div>
+  <div class='search-right'>
+   {{input value=search id='search-field' placeholder="Search jobs, companies or locations"}}
+  </div>
+</div>
+
 {{view Ember.Select content=types
                     value=type
                     prompt="All Job Types" }}

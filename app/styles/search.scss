@@ -1,0 +1,38 @@
+@import 'variables';
+
+div.search-container {
+  height: 40px;
+  width: 45.8%;
+  margin: 0 auto;
+  margin-top: 30px;
+  div {
+    float: left;
+  }
+  div.search-left {
+    position: relative;
+    width: 40px;
+    border-right: 1px solid $light-gray;
+    height: 100%;
+    margin-right: 10px;
+    text-align: center;
+
+    img {
+      position: relative;
+      height: 16px;
+      top: 12px;
+    }
+  }
+
+  div.search-right {
+    width: 90%;;
+    input#search-field {
+      box-shadow:none;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      line-height: 36px;
+      width: 100%;
+    }
+  }
+
+}
