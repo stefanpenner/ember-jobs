@@ -41,7 +41,7 @@ export default Ember.ArrayController.extend({
      });
    }
 
-   filtered.replace(0, filtered.length, result)
+   filtered.replace(0, filtered.length, result.filterBy('live'));
  },
  _filtered: function() {
     Ember.run.once(this, this._filter);

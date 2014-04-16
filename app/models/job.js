@@ -1,4 +1,5 @@
 var Job = DS.Model.extend({
+  live: DS.attr('boolean'),
   title: DS.attr('string'),
   company: DS.belongsTo('company'),
   location: DS.attr('string'),
