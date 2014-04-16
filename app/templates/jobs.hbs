@@ -1,0 +1,8 @@
+{{#each}}
+  <div>
+    {{#link-to 'job' this}}
+      {{title}}
+    {{/link-to}}
+    at {{company.name}} | {{location}}
+  </div>
+{{/each}}
