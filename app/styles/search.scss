@@ -6,8 +6,10 @@ div.search-container {
   margin: 0 auto;
   margin-top: 30px;
   div {
+
     float: left;
   }
+
   div.search-left {
     position: relative;
     width: 40px;
@@ -24,7 +26,8 @@ div.search-container {
   }
 
   div.search-right {
-    width: 90%;;
+    width: 85%;
+
     input#search-field {
       box-shadow:none;
       outline: none;
