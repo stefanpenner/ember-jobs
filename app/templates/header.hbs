@@ -1,6 +1,19 @@
 <div id="header">
-  <h2 id="title">{{#link-to 'index' id='logo'}}Ember jobs{{/link-to}}</h2>
-  <a href="#" {{action 'postJob'}}>Post Jobs</a>
+  <div class='nav'>
+
+  <div class='nav-left'>
+    <img id='logo' src='/ember_logo.png' alt='ember'>
+  </div>
+
+  <div class='nav-center'>
+    <h1 id="title"> JOB BOARD </h1>
+  </div>
+
+  <div class='nav-right'>
+    hello
+  </div>
+
+  </div>
   {{#if isAdmin}}
     {{#link-to 'admin.index'}}
       Admin
