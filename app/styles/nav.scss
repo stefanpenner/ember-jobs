@@ -1,0 +1,39 @@
+@import 'variables';
+
+.nav {
+  background: url('/navigation_background.jpg');
+  background-repeat: repeat-x;
+  box-shadow: 0 2px 8px $shadow-gray;
+  height: 50px;
+  width: 100%;
+
+  .nav-left {
+    position:absolute;
+    left: 60px;
+
+    img#logo {
+      cursor: pointer;
+      height: 30px;
+      margin-top: 10px;
+    }
+  }
+
+  .nav-center {
+    text-align: center;
+    line-height: 54px;
+
+    h1 {
+      font-weight: 600;
+      font-size: 15px;
+      color: white;
+    }
+  }
+
+  .nav-right {
+    position: absolute;
+    right: 60px;
+    top: 10px;
+    height:30px;
+  }
+}
+

@@ -1,0 +1,39 @@
+@import 'variables';
+
+.social-links {
+  margin-top: 5px;
+  height: 25px;
+  font-size: 11px;
+  div {
+    height: 70%;
+    float:left;
+    border-right: 1px solid $dark-splash;
+    line-height: 25px;
+  }
+
+  .left {
+    width:34%;
+    text-align:right;
+    margin-right: 8px;
+    padding-right: 8px;
+  }
+  .right {
+    text-align:center;
+    border:none;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .center {
+    padding-right:8px;
+    text-align:left;
+    margin-left: 8px;
+  }
+}
+
+.social-icon {
+  height: 10px;
+}
+
+.social-link {
+  color: $dark-splash;
+}

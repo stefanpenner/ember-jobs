@@ -1,0 +1,59 @@
+@charset 'utf-8';
+
+////////////
+
+@import 'variables';
+@import 'nav';
+@import 'search';
+@import 'button';
+@import 'card';
+@import 'social';
+@import 'admin'; // Stef's admin styling
+@import 'footer';
+@import 'jobs';
+@import 'job';
+@import 'ad.scss';
+
+////////////
+
+body {
+  margin: 0;
+  background-color: $background-color;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+a {
+  color: $splash;
+  text-decoration: none;
+}
+
+a:active {
+  color: $dark-splash;
+}
+
+h1 {
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+h1#title, h1.job-title {
+  margin-top: 50px;
+  width: 100%;
+  text-align:center;
+}
+
+h1.job-title {
+  margin-top: 20px;
+}
+
+// TODO: decide where this goes, job or jobs?
+img.location-icon {
+  height:20px;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+

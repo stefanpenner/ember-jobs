@@ -1,0 +1,47 @@
+@import 'variables';
+.job-posting {
+  width: 62.5%;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 0;
+}
+
+div.job-posting.small {
+  overflow: hidden;
+  height: 60px;
+
+  div {
+    float: left;
+    height: 100%;
+    line-height: 48px;
+    text-align: center;
+    border-right: 1px solid $light-gray;
+    height: 48px;
+    margin-top:7px;
+  }
+
+  div.name-and-company {
+    width: 40%;
+  }
+
+  div.location {
+    left:40%;
+    width: 27%;
+  }
+
+  div.posted-at {
+    left: 67%;
+    width: 27%;
+  }
+
+  div.arrow {
+    left: 94%;
+    width: 5%;
+    border-right: none;
+   .arrow-icon {
+     position: relative;
+     top: 7px;
+     height: 26px
+   }
+  }
+}

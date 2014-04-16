@@ -1,0 +1,42 @@
+@import 'variables';
+
+button {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  border: none;
+  font-weight: 600;
+}
+
+
+button.dark {
+  border: 1px solid $dark-splash;
+  background: transparent;
+  height: 30px;
+  color: $dark-splash;
+  font-size: 12px;
+}
+
+
+
+button.dark:active {
+  box-shadow: inset  0 0px 4px $dark-splash;
+}
+
+
+button.green {
+  background: $green;
+  color: white;
+}
+
+button.green:active, button.splash:active {
+  box-shadow: inset 0 0 6px $shadow-gray;
+}
+
+button.splash {
+  background: $splash;
+  color: white;
+}
+
