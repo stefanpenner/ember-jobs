@@ -19,6 +19,16 @@
 body {
   margin: 0;
   background-color: $background-color;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+a {
+  color: $splash;
+  text-decoration: none;
+}
+
+a:active {
+  color: $dark-splash;
 }
 
 h1 {
@@ -31,26 +41,26 @@ h1 {
 
 
 .nav {
-  height: 50px;
   background: url('/navigation_background.jpg');
   background-repeat: repeat-x;
-  width: 100%;
   box-shadow: 0 2px 8px $shadow-gray;
+  height: 50px;
+  width: 100%;
 
   .nav-left {
     position:absolute;
     left: 60px;
 
     img#logo {
+      cursor: pointer;
       height: 30px;
       margin-top: 10px;
-      cursor: pointer;
     }
   }
 
   .nav-center {
-    line-height: 54px;
     text-align: center;
+    line-height: 54px;
 
     h1 {
       font-weight: 600;
@@ -73,3 +83,45 @@ h1#title {
   text-align:center;
 }
 
+.job-posting {
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  -moz-box-shadow:    0px 2px 5px 0px rgba(204,204,204,0.50);
+  box-shadow:         0px 2px 5px 0px rgba(204,204,204,0.50);
+  width: 62.5%;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 0;
+}
+
+div.job-posting.small {
+  overflow: hidden;
+  height: 60px;
+  div {
+    float: left;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    border-right: 1px solid $light-gray;
+  }
+  div.name-and-company {
+    width: 40%;
+  }
+  div.location {
+    left:40%;
+    width: 27%;
+  }
+  div.posted-at {
+    left: 67%;
+    width: 27%;
+  }
+  div.arrow {
+    left: 94%;
+    width: 6%;
+    border-right: none;
+  }
+}
+
+.full {
+}

@@ -1,8 +1,19 @@
 {{#each}}
-  <div class="job-list-item">
-    {{#link-to 'job' this}}
-      {{title}}
-    {{/link-to}}
-    at {{company.name}} | {{location}}
+  <div class="job-posting small">
+    <div class="name-and-company">
+        {{#link-to 'job' this}}
+            {{title}}
+        {{/link-to}}
+        at {{company.name}}
+      </div>
+    <div class="location">
+        <img class='location-icon' src='location.png' alt='V' align='middle' />  {{location}}
+    </div>
+    <div class="posted-at">
+          Posted at: /* {{ postedAt }}*/ 4/15/14
+    </div>
+    <div class="arrow">
+      <img src="arrow-right.png" alt="->" />
+    </div>
   </div>
 {{/each}}
