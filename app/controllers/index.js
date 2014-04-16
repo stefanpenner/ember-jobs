@@ -1,4 +1,4 @@
-export default Ember.Controller.extend({
+Ember.Controller.extend({
   needs: ['session'],
   isAdmin: Ember.computed.readOnly('controllers.session.isAdmin'),
   queryParams: [
