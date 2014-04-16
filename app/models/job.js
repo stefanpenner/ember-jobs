@@ -1,4 +1,4 @@
-var Job = DS.Model.extend({
+export default DS.Model.extend({
   live: DS.attr('boolean'),
   title: DS.attr('string'),
   company: DS.belongsTo('company'),
@@ -8,5 +8,3 @@ var Job = DS.Model.extend({
   postedAt: DS.attr('date'),
   applyURL: DS.attr('string')
 });
-
-export default Job;
