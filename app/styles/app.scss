@@ -9,17 +9,9 @@
 @import 'button';
 @import 'card';
 @import 'social';
+@import 'admin'; // Stef's admin styling
 
 /////
-.master {
-  float: left;
-  width: 400px;
-}
-
-.detail {
-  float: left;
-  width: 600px;
-}
 
 body {
   margin: 0;
