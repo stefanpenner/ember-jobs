@@ -7,6 +7,7 @@ var validateES6 = require('broccoli-es6-import-validate');
 var pickFiles = require('broccoli-static-compiler');
 var mergeTrees = require('broccoli-merge-trees');
 var findBowerTrees = require('broccoli-bower');
+var compileSass = require('broccoli-sass');
 
 var env = require('broccoli-env').getEnv();
 var getEnvJSON = require('./config/environment');
@@ -91,7 +92,7 @@ if (env === 'production') {
 
 // Styles
 
-var styles = preprocessCss(appAndDependencies, prefix + '/styles', '/assets');
+var styles = compileSass(appAndDependencies, prefix + '/styles/app.scss', '/styles/app.css');
 
 // Ouput
 
