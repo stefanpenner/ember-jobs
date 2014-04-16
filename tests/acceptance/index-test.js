@@ -16,6 +16,14 @@ function numberOfJobs() {
   return Ember.$('.job-list-item').length;
 }
 
+function selectType(type) {
+  Ember.run(function(){
+    // TODO: replace with testing select helper
+    App.__container__.lookup('controller:index').set('type', type);
+  });
+}
+
+
 test('searching', function() {
   return visit('/').then(function() {
     equal(numberOfJobs(), 3, 'expected 3 jobs');
@@ -35,6 +43,15 @@ test('searching', function() {
     return fillIn($('#search-field'), '').then(function() {
       equal(numberOfJobs(), 3, 'expected 3 jobs');
     });
+  });
+});
+
+test('searching - edge case', function() {
+  return visit('/').then(function() {
+    equal(numberOfJobs(), 3, 'expected 3 jobs');
+
+    selectType('Full Time');
+    equal(numberOfJobs(), 3, 'expected 2 jobs');
   });
 });
 
