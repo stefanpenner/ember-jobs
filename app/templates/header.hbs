@@ -1,19 +1,21 @@
 <div id="header">
-  <div class='nav'>
+<div class='nav'>
 
   <div class='nav-left'>
-    <img id='logo' src='/ember_logo.png' alt='ember'>
+    <a href='/'> <img id='logo' src='/ember_logo.png' alt='ember'> </a>
   </div>
 
   <div class='nav-center'>
-    <h1 id="title"> JOB BOARD </h1>
+    <h1> JOB BOARD </h1>
   </div>
 
   <div class='nav-right'>
-    hello
+    <div>
+      <a href="#" {{action 'postJob'}}>Post Jobs</a>
+    </div>
   </div>
 
-  </div>
+</div>
   {{#if isAdmin}}
     {{#link-to 'admin.index'}}
       Admin
