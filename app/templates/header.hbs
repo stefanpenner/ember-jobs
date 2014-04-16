@@ -9,12 +9,12 @@
   </div>
 
   <div class='nav-right'>
-      <a href="#" {{action 'postJob'}}>Post Jobs</a>
-  {{#if isAdmin}}
-    {{#link-to 'admin.index'}}
-      Admin
-    {{/link-to}}
-  {{/if}}
+      <button class='dark' {{action 'postJob'}}> Post a Job </button>
+        {{#if isAdmin}}
+          {{#link-to 'admin.index'}}
+          Admin
+        {{/link-to}}
+      {{/if}}
   </div>
 
 </div>
