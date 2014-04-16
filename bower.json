@@ -12,5 +12,8 @@
     "loader": "git://github.com/stefanpenner/loader.js#1.0.0",
     "ember-cli-shims": "git://github.com/stefanpenner/ember-cli-shims.git#0.0.1",
     "ember-load-initializers": "git://github.com/stefanpenner/ember-load-initializers.git#0.0.1"
+  },
+  "resolutions": {
+    "ember": "canary"
   }
 }
