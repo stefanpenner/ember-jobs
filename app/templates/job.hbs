@@ -1,9 +1,24 @@
-<div class="job-item">
-  <h1 class="job-title">{{title}}</h1>
-  <h3><a {{bind-attr href=company.url}} target="_blank">{{company.name}}</a> | {{location}}</h3>
-  <img {{bind-attr src=company.logo}}/>
-  <h5>Posted: {{postedAt}} | Job Type: {{type}}</h5>
-  <div class="content">
-    {{description}}
+<div class="logo-container">
+<img class="logo" {{bind-attr src=company.logo}} />
+</div>
+<h1 class="job-title">{{title}} at {{company.name}} </h1>
+<div class="card job-posting full">
+  <div class='content'>
+    <div class="header">
+      <div class="left">
+        Job Type: {{type}}
+      </div>
+      <div class="center">
+        <img src="/location.png" alt="V" class="location-icon" /> {{location}}
+      </div>
+      <div class="right">
+        Posted {{postedAt}} <!-- TODO: format April 15, 2014 -->
+      </div>
+    </div>
+    <div class="body">
+      {{description}}
+    </div>
+    <div class="footer">
+    </div>
   </div>
 </div>

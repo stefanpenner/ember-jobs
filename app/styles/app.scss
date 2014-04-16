@@ -42,6 +42,28 @@ h1 {
   font-weight: 500;
 }
 
+h1#title, h1.job-title {
+  margin-top: 50px;
+  width: 100%;
+  text-align:center;
+}
+
+h1.job-title {
+  margin-top: 20px;
+}
+
+div.logo-container {
+  height: 60px;
+  margin-top: 40px;
+  width: 50%;
+  text-align:center;
+  margin-left: auto;
+  margin-right: auto;
+  img.logo {
+    height: 100%;
+  }
+}
+
 
 
 .card {
@@ -63,6 +85,7 @@ h1 {
 div.job-posting.small {
   overflow: hidden;
   height: 60px;
+
   div {
     float: left;
     height: 100%;
@@ -72,23 +95,21 @@ div.job-posting.small {
     height: 48px;
     margin-top:7px;
   }
+
   div.name-and-company {
     width: 40%;
   }
+
   div.location {
     left:40%;
     width: 27%;
-    img.location-icon {
-      position: relative;
-      top: 4px;
-      height:20px;
-      margin-right: 5px;
-    }
   }
+
   div.posted-at {
     left: 67%;
     width: 27%;
   }
+
   div.arrow {
     left: 94%;
     width: 5%;
@@ -101,8 +122,48 @@ div.job-posting.small {
   }
 }
 
+    img.location-icon {
+      position: relative;
+      top: 4px;
+      height:20px;
+      margin-right: 5px;
+    }
+
 .icon {
 }
 
-.full {
+div.job-posting.full {
+  .content {
+    width: 87%;
+    margin: 0 auto;
+    .header {
+      height: 50px;
+      border-bottom: 1px solid $light-gray;
+      div {
+        text-align:center;
+        float:left;
+        height: 100%;
+        line-height: 38px;
+        border-right: 1px solid $light-gray;
+        height: 38px;
+        margin-top: 6px;
+      }
+      div.left {
+        width: 35%;
+      }
+      div.center {
+        width: 30%;
+      }
+      div.right {
+        width: 34%;
+        border:none;
+      }
+    }
+    .body {
+      margin: 6px auto;
+    }
+    .footer {
+      border-top: 1px solid $light-gray;
+    }
+  }
 }
