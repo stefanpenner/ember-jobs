@@ -220,7 +220,6 @@ div.job-posting.full {
 footer {
   p {
     text-align:center;
-  position: absolute;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -234,4 +233,30 @@ footer {
   }
 }
 
+
+.ad {
+  h1 {
+    text-align:center;
+    width:100%;
+    margin-top: 15px;
+  }
+  p {
+    width:80%;
+    margin: 10px auto;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  div.center {
+    width: 80%;
+    margin: 10px auto;
+    height: 40px;
+    text-align:center;
+  button {
+    height: 100%;
+    font-size: 13px;
+    }
+  }
+  margin: 30px auto;
+  width: 450px;
+  }
 
