@@ -1,6 +1,5 @@
 @charset 'utf-8';
 
-
 ////////////
 
 @import 'variables';
@@ -13,8 +12,9 @@
 @import 'footer';
 @import 'jobs';
 @import 'job';
+@import 'ad.scss';
 
-/////
+////////////
 
 body {
   margin: 0;
@@ -52,10 +52,11 @@ h1.job-title {
 div.logo-container {
   height: 60px;
   margin-top: 40px;
-  width: 50%;
-  text-align:center;
   margin-left: auto;
   margin-right: auto;
+  text-align:center;
+  width: 50%;
+
   img.logo {
     height: 100%;
   }
@@ -63,45 +64,13 @@ div.logo-container {
 
 
 
-    img.location-icon {
-      position: relative;
-      top: 4px;
-      height:20px;
-      margin-right: 5px;
-    }
+img.location-icon {
+  height:20px;
+  margin-right: 5px;
 
-.icon {
-}
-
-.social-link {
-  color: $dark-splash;
+  position: relative;
+  top: 4px;
 }
 
 
-
-.ad {
-  h1 {
-    text-align:center;
-    width:100%;
-    margin-top: 15px;
-  }
-  p {
-    width:80%;
-    margin: 10px auto;
-    font-size: 12px;
-    line-height: 18px;
-  }
-  div.center {
-    width: 80%;
-    margin: 10px auto;
-    height: 40px;
-    text-align:center;
-  button {
-    height: 100%;
-    font-size: 13px;
-    }
-  }
-  margin: 30px auto;
-  width: 450px;
-  }
 
