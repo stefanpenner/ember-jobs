@@ -32,10 +32,10 @@ a:active {
 }
 
 h1 {
-  margin: 0;
-  font-size: 20px;
   color: black;
+  font-size: 20px;
   font-weight: 500;
+  margin: 0;
 }
 
 h1#title, h1.job-title {
@@ -48,21 +48,7 @@ h1.job-title {
   margin-top: 20px;
 }
 
-div.logo-container {
-  height: 60px;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align:center;
-  width: 50%;
-
-  img.logo {
-    height: 100%;
-  }
-}
-
-
-
+// TODO: decide where this goes, job or jobs?
 img.location-icon {
   height:20px;
   margin-right: 5px;
@@ -70,6 +56,4 @@ img.location-icon {
   position: relative;
   top: 4px;
 }
-
-
 

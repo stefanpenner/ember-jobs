@@ -1,13 +1,33 @@
 @import 'variables';
 @import 'jobs';
 
+
+// Company logo above individual job view
+div.logo-container {
+  height: 60px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align:center;
+  width: 50%;
+
+  img.logo {
+    height: 100%;
+  }
+}
+
+// Card
 div.job-posting.full {
+  // Header Body Footer
   .content {
     width: 87%;
     margin: 0 auto;
+
     .header {
       height: 50px;
       border-bottom: 1px solid $light-gray;
+
+      // Shared
       div {
         text-align:center;
         float:left;
@@ -17,30 +37,40 @@ div.job-posting.full {
         height: 38px;
         margin-top: 6px;
       }
+
       div.left {
         width: 35%;
       }
+
       div.center {
         width: 30%;
       }
+
       div.right {
         width: 34%;
+        // overwrite shared
         border:none;
       }
     }
+
+    // Holds job description
+    // TODO: should prob be a p
     .body {
       margin: 6px auto;
     }
+
     .footer {
       text-align: center;
       height: 50px;
       border-top: 1px solid $light-gray;
+
+      // The apply button
       button {
+        font-size: 13px;
         height: 38px;
         margin-top: 6px;
-        font-size: 13px;
 
-        img {
+        img.briefcase-icon {
           height: 15px;
           position: relative;
           top: 2px;
