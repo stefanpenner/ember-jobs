@@ -1,7 +1,7 @@
 <div class="logo-container">
 <img class="logo" {{bind-attr src=company.logo}} />
 </div>
-<h1 class="job-title">{{title}} at {{company.name}} </h1>
+<h1 class="job-title">{{title}} at <a {{bind-attr href=company.url }} />{{company.name}}</a> </h1>
 <div class="card job-posting full">
   <div class='content'>
     <div class="header">
@@ -12,7 +12,7 @@
         <img src="/location.png" alt="V" class="location-icon" /> {{location}}
       </div>
       <div class="right">
-        Posted {{postedAt}} <!-- TODO: format April 15, 2014 -->
+        Posted: {{postedAt}} <!-- TODO: format April 15, 2014 -->
       </div>
     </div>
     <div class="body">
