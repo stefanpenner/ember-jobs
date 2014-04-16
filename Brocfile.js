@@ -92,7 +92,7 @@ if (env === 'production') {
 
 // Styles
 
-var styles = compileSass(appAndDependencies, prefix + '/styles/app.scss', '/styles/app.css');
+var styles = compileSass([appAndDependencies], prefix + '/styles/app.scss', '/assets/app.css');
 
 // Ouput
 
