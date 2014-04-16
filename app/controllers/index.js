@@ -33,9 +33,7 @@ export default Ember.Controller.extend({
          return true;
        }
      }).filter(function(job) {
-
-       return !query ||
-         queryRegExp.test(job.get('title')) ||
+       return queryRegExp.test(job.get('title')) ||
          queryRegExp.test(job.get('description')) ||
          queryRegExp.test(job.get('type')) ||
          queryRegExp.test(job.get('company.name')) ||
