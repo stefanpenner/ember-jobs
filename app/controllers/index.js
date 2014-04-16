@@ -1,4 +1,6 @@
 export default Ember.ArrayController.extend({
+  needs: ['session'],
+  isAdmin: Ember.computed.readOnly('controllers.session.isAdmin'),
   queryParams: [
     'type',
     'search'

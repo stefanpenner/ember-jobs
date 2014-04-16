@@ -1,0 +1,9 @@
+<div id="header">
+  <h2 id="title">{{#link-to 'index' id='logo'}}Ember jobs{{/link-to}}</h2>
+  <a href="#" {{action 'postJob'}}>Post Jobs</a>
+  {{#if isAdmin}}
+    {{#link-to 'admin.index'}}
+      Admin
+    {{/link-to}}
+  {{/if}}
+</div>
