@@ -1,5 +1,5 @@
 {{#each}}
-  <div class="job-posting small">
+  <div class="card job-posting small">
     <div class="name-and-company">
         {{#link-to 'job' this}}
             {{title}}
@@ -7,13 +7,13 @@
         at {{company.name}}
       </div>
     <div class="location">
-        <img class='location-icon' src='location.png' alt='V' align='middle' />  {{location}}
+      <img class='location-icon' src='location.png' alt='V' />  {{location}}
     </div>
     <div class="posted-at">
-          Posted at: /* {{ postedAt }}*/ 4/15/14
+          Posted:  {{ postedAt }}
     </div>
     <div class="arrow">
-      <img src="arrow-right.png" alt="->" />
+      {{#link-to 'job' this}} <img  class='arrow-icon icon' src='arrow-right.png' alt="->" /> {{/link-to}}
     </div>
   </div>
 {{/each}}
