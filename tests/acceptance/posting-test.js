@@ -14,8 +14,8 @@ module('test posting', {
 
 test('searching', function() {
   return visit('/').then(function() {
-    return click('.job-list-item:first a').then(function(){
-      equal($('.job-title').text(), 'UI Engineer');
+    return click('.job-posting:first a').then(function(){
+      equal($('.job-title').text(), 'UI Engineer at Yahoo');
     });
   });
 });
