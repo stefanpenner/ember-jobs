@@ -13,7 +13,7 @@ module('test app', {
 });
 
 function numberOfJobs() {
-  return Ember.$('.job-list-item').length;
+  return Ember.$('.job-posting').length;
 }
 
 function selectType(type) {
