@@ -55,3 +55,16 @@ test('searching - edge case', function() {
   });
 });
 
+test('searching - edge case - switch from Full Time to All Types', function() {
+  return visit('/').then(function() {
+    fillIn($('#search-field'), 'yahoo');
+    fillIn('.ember-select', 'Full Time');
+    andThen(function() {
+      equal(numberOfJobs(), 1, 'expected 1 job');
+    });
+    fillIn('.ember-select', 'All Job Types');
+    andThen(function() {
+      equal(numberOfJobs(), 1, 'expected 1 job');
+    });
+  });
+});
