@@ -51,7 +51,7 @@ test('searching - edge case', function() {
     equal(numberOfJobs(), 3, 'expected 3 jobs');
 
     selectType('Full Time');
-    equal(numberOfJobs(), 3, 'expected 2 jobs');
+    equal(numberOfJobs(), 3, 'expected 3 jobs');
   });
 });
 
