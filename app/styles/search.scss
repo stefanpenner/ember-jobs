@@ -2,7 +2,7 @@
 
 div.search-container {
   height: 40px;
-  width: 45.8%;
+  width: 45em;
   margin: 0 auto;
   margin-top: 30px;
   div {
@@ -11,11 +11,8 @@ div.search-container {
   }
 
   div.search-left {
-    position: relative;
-    width: 40px;
-    border-right: 1px solid $light-gray;
+    width: 6%;
     height: 100%;
-    margin-right: 10px;
     text-align: center;
 
     img {
@@ -24,18 +21,43 @@ div.search-container {
       top: 12px;
     }
   }
+      font-size: 13px;
 
-  div.search-right {
-    width: 85%;
+  div.search-center {
+    width: 75%;
+    border-right: 1px solid $light-gray;
 
     input#search-field {
       box-shadow:none;
       outline: none;
       border: none;
-      font-size: 16px;
+      font-size: inherit;
       line-height: 36px;
-      width: 100%;
+      width: 99%;
     }
   }
 
+  div.search-right {
+    width: 16%;
+    padding: 0 1%;
+
+    select {
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      appearance: none;
+
+      background: transparent url("/arrows.png") no-repeat right;
+      background-size: auto 30%;
+
+      border: none;
+      color: $dark-gray;
+      cursor: pointer;
+      outline: none;
+      font-size: inherit;
+      height: 100%;
+      line-height: 40px;
+      width: 100%;
+    }
+
+  }
 }
