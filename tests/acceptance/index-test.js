@@ -68,3 +68,9 @@ test('searching - edge case - switch from Full Time to All Types', function() {
     });
   });
 });
+
+test('search by company name directly with query param in url', function() {
+  return visit('/?search=yahoo').then(function() {
+    equal(numberOfJobs(), 1, 'expected 1 job');
+  });
+});
