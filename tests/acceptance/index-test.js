@@ -51,7 +51,26 @@ test('searching - edge case', function() {
     equal(numberOfJobs(), 3, 'expected 3 jobs');
 
     selectType('Full Time');
-    equal(numberOfJobs(), 3, 'expected 2 jobs');
+    equal(numberOfJobs(), 3, 'expected 3 jobs');
   });
 });
 
+test('searching - edge case - switch from Full Time to All Types', function() {
+  return visit('/').then(function() {
+    fillIn($('#search-field'), 'yahoo');
+    fillIn('.ember-select', 'Full Time');
+    andThen(function() {
+      equal(numberOfJobs(), 1, 'expected 1 job');
+    });
+    fillIn('.ember-select', 'All Job Types');
+    andThen(function() {
+      equal(numberOfJobs(), 1, 'expected 1 job');
+    });
+  });
+});
+
+test('search by company name directly with query param in url', function() {
+  return visit('/?search=yahoo').then(function() {
+    equal(numberOfJobs(), 1, 'expected 1 job');
+  });
+});

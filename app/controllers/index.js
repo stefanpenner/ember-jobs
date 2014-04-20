@@ -14,26 +14,27 @@ export default Ember.Controller.extend({
    this._super();
    this.set('filtered', []);
  },
+  jobsByType: function() {
+    var type = this.get('type');
+    var model = this.get('model');
+    if (type && !Ember.isBlank(type) && type !== "undefined") {
+      return model.filterBy('type', type);
+    } else {
+      return model;
+    }
+  }.property('type'),
  _filter: function() {
    // TODO: real search, proper one at a time semantics
-   var type = this.get('type');
    var query = this.get('search');
    var queryRegExp = new RegExp(query,'i');
-   var model = this.get('model');
+   var model = this.get('jobsByType');
    var filtered = this.get('filtered');
    var result;
 
-   if (Ember.isBlank(query) && Ember.isBlank(type) || type === "undefined") {
+   if (Ember.isBlank(query)) {
       result = model.toArray();
    } else {
-     result = model.filter(function(job) {
-       if (type) {
-         return job.get('type') === type;
-       } else {
-         return true;
-       }
-     }).filter(function(job) {
-
+      result = model.filter(function(job) {
        return !query ||
          queryRegExp.test(job.get('title')) ||
          queryRegExp.test(job.get('description')) ||
@@ -47,5 +48,5 @@ export default Ember.Controller.extend({
  },
  _filtered: function() {
     Ember.run.once(this, this._filter);
- }.observes('model.@each.{title,description,type,location,company.name}','type','search').on('init')
+ }.observes('model.@each.{title,description,type,location,company.name}','jobsByType','search').on('init')
 });
