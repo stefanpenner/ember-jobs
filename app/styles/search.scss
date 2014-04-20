@@ -61,13 +61,3 @@ div.search-container {
 
   }
 }
-
-@media only screen and (max-device-width: 480px) {
-  div.search-container  {
-    width: 100%;
-
-    div.search-right {
-      width: 70%;
-    }
-  }
-}
