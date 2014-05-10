@@ -7,17 +7,18 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script>
-      window.ENV = {{ENV}};
-    </script>
+    {{BASE_TAG}}
+
     <link rel="icon" type="image/x-icon" href="/fav.png">
 
     <link rel="stylesheet" href="/assets/app.css">
-    <script src="https://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
-
-    <script src="/assets/app.js"></script>
   </head>
   <body>
+    <script>
+      window.ENV = {{ENV}};
+    </script>
+    <script src="https://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
+    <script src="assets/app.js"></script>
     <script>
       window.EmberJobs = require('ember-jobs/app')['default'].create(ENV.APP);
     </script>
