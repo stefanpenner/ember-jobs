@@ -22,7 +22,7 @@ function simulateAdmin() {
   App.__container__.lookup('controller:session').set('isAdmin', true);
 }
 
-test('non admin', function() {
+test('admin', function() {
   simulateAdmin();
 
   return visit('/admin').then(function() {
