@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    firebase: 'https://ember-jobs.firebaseio.com/',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
