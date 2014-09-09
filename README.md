@@ -1,4 +1,4 @@
-# Ember-jobs
+# Ember-jobs [![Build Status](https://travis-ci.org/stefanpenner/ember-jobs.svg?branch=master)](https://travis-ci.org/stefanpenner/ember-jobs)
 
 This README outlines the details of collaborating on this Ember application.
 
