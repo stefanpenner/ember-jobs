@@ -1,3 +1,6 @@
+import Ember from 'ember';
+import ENV from 'ember-jobs/config/environment';
+
 var Router = Ember.Router.extend({
   location: ENV.locationType
 });

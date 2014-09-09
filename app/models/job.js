@@ -1,3 +1,5 @@
+import DS from 'ember-data';
+
 export default DS.Model.extend({
   live: DS.attr('boolean'),
   title: DS.attr('string'),

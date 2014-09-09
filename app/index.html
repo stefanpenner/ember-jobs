@@ -9,18 +9,18 @@
 
     {{BASE_TAG}}
 
-    <link rel="icon" type="image/x-icon" href="/fav.png">
-
-    <link rel="stylesheet" href="/assets/app.css">
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/ember-jobs.css">
   </head>
   <body>
     <script>
-      window.ENV = {{ENV}};
+      window.EmberJobsENV = {{ENV}};
+      window.EmberENV = window.EmberJobsENV.EmberENV;
     </script>
-    <script src="https://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
-    <script src="assets/app.js"></script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/ember-jobs.js"></script>
     <script>
-      window.EmberJobs = require('ember-jobs/app')['default'].create(ENV.APP);
+      window.EmberJobs = require('ember-jobs/app')['default'].create(EmberJobsENV.APP);
     </script>
   </body>
 </html>

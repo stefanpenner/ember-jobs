@@ -1,8 +1,9 @@
-/* global alert */
+import Ember from 'ember';
+
 export default Ember.Route.extend({
   actions: {
     postJob: function() {
-      alert('post');
+      window.alert('post');
     }
   }
 });

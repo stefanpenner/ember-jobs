@@ -9,8 +9,9 @@
 
     {{BASE_TAG}}
 
-    <link rel="stylesheet" href="assets/app.css">
-    <link rel="stylesheet" href="assets/qunit.css">
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/ember-jobs.css">
+    <link rel="stylesheet" href="assets/test-support.css">
     <style>
       #ember-testing-container {
         position: absolute;
@@ -33,15 +34,16 @@
     <div id="qunit-fixture"></div>
 
     <script>
-      window.ENV = {{ENV}};
+      window.EmberJobsENV = {{ENV}};
+      window.EmberENV = window.EmberJobsENV.EmberENV;
     </script>
-    <script src="assets/qunit.js"></script>
-    <script src="https://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
-    <script src="assets/app.js"></script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/test-support.js"></script>
+    <script src="assets/ember-jobs.js"></script>
     <script src="testem.js"></script>
     <script>
       require('ember-jobs/tests/test-helper');
-      require('ember-jobs/tests/test-loader');
     </script>
+    <script src="assets/test-loader.js"></script>
   </body>
 </html>
