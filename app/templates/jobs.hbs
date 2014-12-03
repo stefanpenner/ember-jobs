@@ -1,19 +1,21 @@
 {{#each}}
-  <div class="card job-posting small">
-    <div class="name-and-company">
-        {{#link-to 'job' this}}
-            {{title}}
-        {{/link-to}}
-        at {{company.name}}
-      </div>
-    <div class="location">
+  <div class='card job-posting small'>
+    <div class='name-and-company'>
+      {{#link-to 'job' this}}
+          {{title}}
+      {{/link-to}}
+      at {{company.name}}
+    </div>
+    <div class='location'>
       {{location}}
     </div>
-    <div class="posted-at">
-          Posted:  {{ postedAt }}
+    <div class='posted-at'>
+      Posted:  {{ postedAt }}
     </div>
-    <div class="arrow">
-      {{#link-to 'job' this}}<span class="arrow-icon"></span>{{/link-to}}
+    <div class='arrow'>
+      {{#link-to 'job' this}}
+        <span class='arrow-icon'></span>
+      {{/link-to}}
     </div>
   </div>
 {{/each}}

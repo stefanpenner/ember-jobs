@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
-    postJob: function() {
+    postJob() {
       window.alert('post');
     }
   }

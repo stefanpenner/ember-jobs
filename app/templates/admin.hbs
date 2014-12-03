@@ -1,13 +1,13 @@
-<div class="master">
+<div class='master'>
   {{#each}}
-  <div class="job-list-item">
-    {{#link-to 'admin.job' this}}
-    {{title}}
-    {{/link-to}}
-    at {{company.name}} | {{location}}
-  </div>
+    <div class='job-list-item'>
+      {{#link-to 'admin.job' this}}
+        {{title}}
+      {{/link-to}}
+      at {{company.name}} | {{location}}
+    </div>
   {{/each}}
 </div>
-<div class="detail">
+<div class='detail'>
   {{outlet}}
 </div>

@@ -5,10 +5,10 @@ import Ember from 'ember';
 var App;
 
 module('test app', {
-  setup: function() {
+  setup() {
     App = startApp();
   },
-  teardown: function() {
+  teardown() {
     Ember.run(App, 'destroy');
   }
 });
@@ -18,37 +18,34 @@ function numberOfJobs() {
 }
 
 function selectType(type) {
-  Ember.run(function(){
-    // TODO: replace with testing select helper
-    App.__container__.lookup('controller:index').set('type', type);
-  });
+  // TODO: replace with testing select helper
+  Ember.run(() => App.__container__.lookup('controller:index').set('type', type));
 }
 
-
-test('searching', function() {
-  return visit('/').then(function() {
+test('searching',() => {
+  return visit('/').then(() => {
     equal(numberOfJobs(), 3, 'expected 3 jobs');
 
-    fillIn($('#search-field'), 'UI').then(function() {
+    fillIn($('#search-field'), 'UI').then(() => {
       equal(numberOfJobs(), 2, 'expected 2 jobs');
     });
 
-    fillIn($('#search-field'), 'ASDFASDF').then(function() {
+    fillIn($('#search-field'), 'ASDFASDF').then(() => {
       equal(numberOfJobs(), 0, 'expected 0 jobs');
     });
 
-    fillIn($('#search-field'), 'Palo alto').then(function() {
+    fillIn($('#search-field'), 'Palo alto').then(() => {
       equal(numberOfJobs(), 2, 'expected 2 jobs');
     });
 
-    return fillIn($('#search-field'), '').then(function() {
+    return fillIn($('#search-field'), '').then(() => {
       equal(numberOfJobs(), 3, 'expected 3 jobs');
     });
   });
 });
 
-test('searching - edge case', function() {
-  return visit('/').then(function() {
+test('searching - edge case', () => {
+  return visit('/').then(() => {
     equal(numberOfJobs(), 3, 'expected 3 jobs');
 
     selectType('Full Time');
@@ -56,22 +53,17 @@ test('searching - edge case', function() {
   });
 });
 
-test('searching - edge case - switch from Full Time to All Types', function() {
-  return visit('/').then(function() {
+test('searching - edge case - switch from Full Time to All Types', () => {
+  return visit('/').then(() => {
     fillIn($('#search-field'), 'yahoo');
     fillIn('.ember-select', 'Full Time');
-    andThen(function() {
-      equal(numberOfJobs(), 1, 'expected 1 job');
-    });
+    andThen(() => equal(numberOfJobs(), 1, 'expected 1 job'));
+
     fillIn('.ember-select', 'All Job Types');
-    andThen(function() {
-      equal(numberOfJobs(), 1, 'expected 1 job');
-    });
+    andThen(() => equal(numberOfJobs(), 1, 'expected 1 job') );
   });
 });
 
-test('search by company name directly with query param in url', function() {
-  return visit('/?search=yahoo').then(function() {
-    equal(numberOfJobs(), 1, 'expected 1 job');
-  });
+test('search by company name directly with query param in url', () => {
+  return visit('/?search=yahoo').then(() => equal(numberOfJobs(), 1, 'expected 1 job'));
 });

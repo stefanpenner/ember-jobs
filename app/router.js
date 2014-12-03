@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import ENV from 'ember-jobs/config/environment';
+import config from 'ember-jobs/config/environment';
 
 var Router = Ember.Router.extend({
-  location: ENV.locationType
+  location: config.locationType
 });
 
 Router.map(function() {

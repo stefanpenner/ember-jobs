@@ -2,14 +2,19 @@
 
 module.exports = function(environment) {
   var ENV = {
+    modulePrefix: 'ember-jobs',
     firebase: 'https://ember-jobs.firebaseio.com/',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
+        'ember-htmlbars': true,
+        'ember-htmlbars-attribute-syntax': true,
+        'ember-htmlbars-inline-if-helper': true,
+        'ember-htmlbars-component-generation': true,
+        'ember-metal-injected-properties': true,
+        'ember-routing-named-substates': true
       }
     },
 
@@ -28,7 +33,15 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
-    ENV.baseURL = '/'; // Testem prefers this...
+    // Testem prefers this...
+    ENV.baseURL = '/';
+    ENV.locationType = 'none';
+
+    // keep test console output quieter
+    ENV.APP.LOG_ACTIVE_GENERATION = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
+
+    ENV.APP.rootElement = '#ember-testing';
   }
 
   if (environment === 'production') {

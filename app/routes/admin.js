@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  redirect: function() {
+  redirect() {
     var isAdmin = this.controllerFor('session').get('isAdmin');
 
     if (isAdmin) {
@@ -10,7 +10,8 @@ export default Ember.Route.extend({
       this.transitionTo('index');
     }
   },
-  model: function() {
+
+  model() {
     return this.store.find('job');
   }
 });

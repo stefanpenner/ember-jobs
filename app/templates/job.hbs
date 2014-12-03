@@ -1,37 +1,37 @@
-<div class="logo-container">
-<img class="logo" {{bind-attr src=company.logo}} />
+<div class='logo-container'>
+<img class='logo' {{bind-attr src=company.logo}} />
 </div>
-<h1 class="job-title">{{title}} at <a {{bind-attr href=company.url }} />{{company.name}}</a></h1>
-<div class="card job-posting full">
+<h1 class='job-title'>{{title}} at <a {{bind-attr href=company.url}}>{{company.name}}</a></h1>
+<div class='card job-posting full'>
   <div class='content'>
-    <div class="header">
-      <div class="left">
+    <div class='header'>
+      <div class='left'>
         Job Type: {{type}}
       </div>
-      <div class="center">
+      <div class='center'>
         <span class="location"></span> {{location}}
       </div>
-      <div class="right">
+      <div class='right'>
         Posted: {{postedAt}} <!-- TODO: format April 15, 2014 -->
       </div>
     </div>
-    <div class="body">
+    <div class='body'>
       {{description}}
     </div>
-    <div class="footer">
-      <button class="green apply" {{action 'apply'}}> <img src="/briefcase.png" alt="" class="briefcase-icon" />Apply for this Job </button>
+    <div class='footer'>
+      <button class='green apply' {{action 'apply'}}> <img src='/briefcase.png' alt='' class='briefcase-icon' />Apply for this Job </button>
     </div>
   </div>
 </div>
-<div class="social-links">
-  <div class="left">
-    <a href="#" class="social-link"> <img class="social-icon" src="/twitter.png" alt="t"> Tweet about this job </a>
+<div class='social-links'>
+  <div class='left'>
+    <a href='#' class='social-link'> <img class='social-icon' src='/twitter.png' alt='t'> Tweet about this job </a>
   </div>
-  <div class="center">
-    <a href="#" class="social-link"> <img class="social-icon" src="/facebook.png" alt="f"> Share this job on facebook </a>
+  <div class='center'>
+    <a href='#' class='social-link'> <img class='social-icon' src='/facebook.png' alt='f'> Share this job on facebook </a>
   </div>
-  <div class="right">
-    <a href="#" class="social-link"> <img class="social-icon" src="/rss.png" alt="[rss]"> Subscribe to our RSS Feed </a>
+  <div class='right'>
+    <a href='#' class='social-link'> <img class='social-icon' src='/rss.png' alt='[rss]'> Subscribe to our RSS Feed </a>
   </div>
 </div>
 

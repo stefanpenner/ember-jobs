@@ -1,7 +1,9 @@
 <div class='nav'>
 
   <div class='nav-left'>
-    {{#link-to 'index'}} <img id='logo' src='/ember_logo.png' alt='ember'> {{/link-to}}
+    {{#link-to 'index'}}
+      <img id='logo' src='/ember_logo.png' alt='ember'>
+    {{/link-to}}
   </div>
 
   <div class='nav-center'>
@@ -9,12 +11,12 @@
   </div>
 
   <div class='nav-right'>
-      <button class='dark' {{action 'postJob'}}> Post a Job </button>
-        {{#if isAdmin}}
-          {{#link-to 'admin.index'}}
-          Admin
-        {{/link-to}}
-      {{/if}}
+    <button class='dark' {{action 'postJob'}}> Post a Job </button>
+    {{#if isAdmin}}
+      {{#link-to 'admin.index'}}
+        Admin
+      {{/link-to}}
+    {{/if}}
   </div>
 
 </div>

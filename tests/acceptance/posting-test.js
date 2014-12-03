@@ -5,17 +5,17 @@ import Ember from 'ember';
 var App;
 
 module('test posting', {
-  setup: function() {
+  setup() {
     App = startApp();
   },
-  teardown: function() {
+  teardown() {
     Ember.run(App, 'destroy');
   }
 });
 
-test('searching', function() {
-  return visit('/').then(function() {
-    return click('.job-posting:first a').then(function(){
+test('searching', () => {
+  return visit('/').then(() => {
+    return click('.job-posting:first a').then(() => {
       equal($('.job-title').text(), 'UI Engineer at Yahoo');
     });
   });

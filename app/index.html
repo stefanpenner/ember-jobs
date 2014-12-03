@@ -7,20 +7,15 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{BASE_TAG}}
+    {{content-for 'head'}}
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/ember-jobs.css">
   </head>
   <body>
-    <script>
-      window.EmberJobsENV = {{ENV}};
-      window.EmberENV = window.EmberJobsENV.EmberENV;
-    </script>
+    {{content-for 'body'}}
+
     <script src="assets/vendor.js"></script>
     <script src="assets/ember-jobs.js"></script>
-    <script>
-      window.EmberJobs = require('ember-jobs/app')['default'].create(EmberJobsENV.APP);
-    </script>
   </body>
 </html>
