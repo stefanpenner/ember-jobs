@@ -1,10 +1,10 @@
 <div class='master'>
-  {{#each model as |job|}}
+  {{#each job in model}}
     <div class='job-list-item'>
-      {{#link-to 'admin.job' job}}
+      {{#link-to 'admin.job' this}}
         {{job.title}}
       {{/link-to}}
-      at {{job.company.name}} | {{job.location}}
+      at {{company.name}} | {{location}}
     </div>
   {{/each}}
 </div>
