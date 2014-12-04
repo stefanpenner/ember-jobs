@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   redirect() {
-    var isAdmin = this.controllerFor('session').get('isAdmin');
+    var isAdmin = this.get('sessionService.isAdmin');
 
     if (isAdmin) {
       return true;

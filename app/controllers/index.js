@@ -2,8 +2,8 @@ import Ember from 'ember';
 var computed = Ember.computed;
 
 export default Ember.Controller.extend({
-  needs: ['session'],
-  isAdmin: Ember.computed.readOnly('controllers.session.isAdmin'),
+  sessionService: Ember.inject.service('session'),
+  isAdmin: Ember.computed.readOnly('sessionService.isAdmin'),
   queryParams: [
     'type',
     'search'
