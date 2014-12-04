@@ -14,7 +14,8 @@ module.exports = function(environment) {
         'ember-htmlbars-inline-if-helper': true,
         'ember-htmlbars-component-generation': true,
         'ember-metal-injected-properties': true,
-        'ember-routing-named-substates': true
+        'ember-routing-named-substates': true,
+        'ember-htmlbars-block-params': true
       }
     },
 
