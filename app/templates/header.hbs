@@ -1,0 +1,20 @@
+<div class='nav'>
+
+  <div class='nav-left'>
+    {{#link-to 'index'}}
+      <img id='logo' src='/ember_logo.png' alt='ember'>
+    {{/link-to}}
+  </div>
+
+  <div class='nav-center'>
+    <h1> JOB BOARD </h1>
+  </div>
+
+  <div class='nav-right'>
+    <button class='dark' id="post-job" {{action 'postJob'}}> Post a Job </button>
+    {{#link-to 'admin.index'}}
+      Admin
+    {{/link-to}}
+  </div>
+
+</div>

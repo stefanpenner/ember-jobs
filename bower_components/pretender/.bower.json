@@ -1,0 +1,36 @@
+{
+  "name": "pretender",
+  "version": "0.1.0",
+  "authors": [
+    "Trek Glowacki <trek.glowacki@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "main": [
+    "./pretender.js"
+  ],
+  "dependencies": {
+    "FakeXMLHttpRequest": "~1.0.0",
+    "route-recognizer": "~0.1.1"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.0"
+  },
+  "homepage": "https://github.com/trek/pretender",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "c040751cb59ea66877772961ab6d97640c6a932b"
+  },
+  "_source": "git://github.com/trek/pretender.git",
+  "_target": "0.1.0",
+  "_originalSource": "pretender",
+  "_direct": true
+}

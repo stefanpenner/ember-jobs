@@ -1,0 +1,30 @@
+.ad {
+  margin: 30px auto;
+  width: 450px;
+
+  h1 {
+    margin-top: 15px;
+    text-align:center;
+    width:100%;
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 10px auto;
+    width: 80%;
+  }
+
+  div.center {
+    height: 40px;
+    margin: 10px auto;
+    text-align: center;
+    width: 80%;
+
+    button {
+      font-size: 13px;
+      height: 100%;
+    }
+  }
+}
+

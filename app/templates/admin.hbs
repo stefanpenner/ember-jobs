@@ -1,0 +1,20 @@
+<div class='master'>
+  <ul>
+    {{#each model as |job|}}
+      {{#link-to 'admin.job' job}}
+        job: {{job.title}}
+      {{/link-to}}
+      at {{job.company.name}} | {{job.location}}
+      <button {{action "delete" job}}>
+        Delete
+      </button>
+      <button {{action "toggleLive" job}}>
+        {{#if job.live}}disable{{else}}enable{{/if}}
+      </button>
+    {{/each}}
+  </ul>
+</div>
+<div class='detail'>
+  {{outlet}}
+</div>
+<br style='clear:both'>

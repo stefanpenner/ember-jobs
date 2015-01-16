@@ -1,0 +1,43 @@
+{
+  "name": "emberfire",
+  "description": "The officially supported Ember binding for Firebase",
+  "version": "1.2.7",
+  "authors": [
+    "Firebase <support@firebase.com> (https://www.firebase.com/)"
+  ],
+  "homepage": "https://github.com/firebase/emberfire",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/firebase/emberfire.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "ember",
+    "firebase",
+    "realtime",
+    "ember-addon"
+  ],
+  "main": "dist/emberfire.min.js",
+  "ignore": [
+    "**/.*",
+    "src",
+    "lib",
+    "test",
+    "tasks",
+    "vendor",
+    "examples",
+    "node_modules",
+    "bower_components",
+    "build.sh",
+    "changelog.txt",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "firebase": "1.1.x",
+    "ember": ">=1.4.0 < 2.0.0",
+    "ember-data": "http://builds.emberjs.com/canary/ember-data.js"
+  },
+  "devDependencies": {
+  }
+}

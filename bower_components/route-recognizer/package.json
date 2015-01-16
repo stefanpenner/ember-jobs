@@ -1,0 +1,14 @@
+{
+  "name": "route-recognizer",
+  "version": "0.1.1",
+  "description": "A lightweight JavaScript library that matches paths against registered routes.",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tildeio/route-recognizer.git"
+  },
+  "devDependencies": {
+    "es6-module-transpiler": "~0.3.2"
+  },
+  "main": "dist/route-recognizer.cjs.js"
+}

@@ -1,0 +1,16 @@
+<div class='card search-container'>
+  <div class='search-left'>
+    <img src='search.png' alt='Q'>
+  </div>
+  <div class='search-center'>
+    {{input value=search
+            id='search-field'
+            placeholder='Search jobs, companies or locations'}}
+  </div>
+  <div class='search-right'>
+    {{view 'select' content=types
+                    value=type
+                    prompt='All Job Types' class='job-type' }}
+  </div>
+</div>
+
