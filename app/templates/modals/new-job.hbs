@@ -1,4 +1,7 @@
-{{#our-modal class="new-job-modal" close="closeModal"}}
+<our-modal class="new-job-modal" close="closeModal">
   <h1> I am the new job modal</h1>
-{{/our-modal}}
-
+  <job-form jobCreated="closeModal" />
+  <a href="#" {{action "closeModal"}}>
+    cancel
+  </a>
+</our-modal>

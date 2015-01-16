@@ -1,0 +1,12 @@
+<h1>Job</h1>
+<label>Title {{input value=job.title}}</label>
+<label>type {{input value=job.type}}</label>
+<label>description {{input value=job.description}}</label>
+<button {{action "save"}} {{bind-attr disabled=isSaving}}>
+
+  {{#if isSaving}}
+    Saving
+  {{else}}
+    Save
+  {{/if}}
+</button>
