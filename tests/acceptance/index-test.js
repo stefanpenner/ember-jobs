@@ -1,11 +1,14 @@
 import startApp from '../helpers/start-app';
 import { test } from 'ember-qunit';
 import Ember from 'ember';
+import Pretender from 'pretender';
+import json from '../helpers/json';
 
-var App;
+var App, server;
 
 module('test app', {
   setup() {
+    server = new Pretender();
     App = startApp();
   },
 
@@ -22,8 +25,31 @@ function selectType(type) {
   // TODO: replace with testing select helper
   Ember.run(() => App.__container__.lookup('controller:index').set('type', type));
 }
+var i = 0;
+function job(attrs) {
+  return Ember.merge(JSON.parse(JSON.stringify({
+    id: i++,
+    live: true,
+    title: 'I am a job title',
+    location: 'Boston',
+    type: 'Full Time',
+    description: 'a cool job'
+  })), attrs);
+}
 
 test('searching', () => {
+  server.get('/jobs', json(200, {
+    jobs: [
+      job({ title: 'UI Engineer'     }),
+      job({ location: 'Palo Alto', title: 'UI Engineer'     }),
+      job({ location: 'Palo Alto', title: 'Backend Engineer'}),
+    ]
+  }));
+
+  server.get('/companies', json(200, {
+    companies: []
+  }));
+
   return visit('/').then(() => {
     equal(numberOfJobs(), 3, 'expected 3 jobs');
 

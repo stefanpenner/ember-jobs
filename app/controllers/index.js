@@ -16,7 +16,8 @@ export default Ember.Controller.extend({
   ],
 
   init() {
-    this._super();
+    this._super(...arguments);
+
     this.set('filtered', []);
     this.search = null;
   },

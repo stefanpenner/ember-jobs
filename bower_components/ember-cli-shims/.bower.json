@@ -26,8 +26,7 @@
     "tag": "0.0.3",
     "commit": "5f600d46dba23d580f7ab0f691190cbf55c24fc8"
   },
-  "_source": "git://github.com/stefanpenner/ember-cli-shims.git",
+  "_source": "git://github.com/ember-cli/ember-cli-shims.git",
   "_target": "0.0.3",
-  "_originalSource": "stefanpenner/ember-cli-shims",
-  "_direct": true
+  "_originalSource": "ember-cli/ember-cli-shims"
 }
