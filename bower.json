@@ -1,7 +1,7 @@
 {
   "name": "ember-jobs",
   "dependencies": {
-    "handlebars": "~1.3.0",
+    "handlebars": "~2.0.0",
     "jquery": "^1.11.1",
     "ember-data": "1.0.0-beta.12",
     "ember-resolver": "~0.1.11",
@@ -18,7 +18,6 @@
     "pretender": "0.1.0"
   },
   "resolutions": {
-    "handlebars": "~2.0.0",
     "ember": "canary",
     "ember-data": "1.0.0-beta.12",
     "qunit": "~1.15.0"
