@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-jobs',
+    podModulePrefix: 'ember-jobs/pods',
     firebase: 'https://ember-jobs.firebaseio.com/',
     environment: environment,
     baseURL: '/',
