@@ -26,17 +26,16 @@ export default Ember.Component.extend({
       var store = this.store;
       var companyAttributes = this.get('company');
       var jobAttributes = this.get('job');
-      this.set('isSaving', true);
-
       var company = store.createRecord('company', companyAttributes);
+
+      this.set('isSaving', true);
 
       company.save().then((company) => {
         jobAttributes.company = company;
         jobAttributes.live = true; // tmp
-        var job = store.createRecord('job', jobAttributes);
-        return job.save();
-      }).finally( () => this.set('isSaving', false) );
 
+        return store.createRecord('job', jobAttributes).save();
+      }).finally( () => this.set('isSaving', false) );
     }
   }
 });

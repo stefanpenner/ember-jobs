@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['our-modal'],
 
-
   /*
    * close if anything but the modal gets clicked
    */
