@@ -1,7 +1,12 @@
 <div class='logo-container'>
-<img class='logo' src={{model.company.logo}} />
+  <img class='logo' src={{model.company.logo}} />
 </div>
-<h1 class='job-title'>{{model.title}} at <a href={{model.company.url}}>{{model.company.name}}</a></h1>
+<h1 class='job-title'>
+  {{model.title}} at
+  <a href={{model.company.url}}>
+    {{model.company.name}}
+  </a>
+</h1>
 <div class='card job-posting full'>
   <div class='content'>
     <div class='header'>
@@ -19,18 +24,30 @@
       {{model.description}}
     </div>
     <div class='footer'>
-      <button class='green apply' {{action 'apply'}}> <img src='/briefcase.png' alt='' class='briefcase-icon' />Apply for this Job </button>
+      <button class='green apply' {{action 'apply'}}>
+        <img src='/briefcase.png' alt='' class='briefcase-icon' />
+        Apply for this Job
+      </button>
     </div>
   </div>
 </div>
 <div class='social-links'>
   <div class='left'>
-    <a href='#' class='social-link'> <img class='social-icon' src='/twitter.png' alt='t'> Tweet about this job </a>
+    <a href='#' class='social-link'>
+      <img class='social-icon' src='/twitter.png' alt='t'>
+      Tweet about this job
+    </a>
   </div>
   <div class='center'>
-    <a href='#' class='social-link'> <img class='social-icon' src='/facebook.png' alt='f'> Share this job on facebook </a>
+    <a href='#' class='social-link'>
+      <img class='social-icon' src='/facebook.png' alt='f'>
+      Share this job on facebook
+    </a>
   </div>
   <div class='right'>
-    <a href='#' class='social-link'> <img class='social-icon' src='/rss.png' alt='[rss]'> Subscribe to our RSS Feed </a>
+    <a href='#' class='social-link'>
+      <img class='social-icon' src='/rss.png' alt='[rss]'>
+      Subscribe to our RSS Feed
+    </a>
   </div>
 </div>

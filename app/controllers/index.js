@@ -1,10 +1,12 @@
 import Ember from 'ember';
 
 var computed = Ember.computed;
+var inject = Ember.inject;
 
 export default Ember.Controller.extend({
-  sessionService: Ember.inject.service('session'),
-  isAdmin: Ember.computed.readOnly('sessionService.isAdmin'),
+  sessionService: inject.service('session'),
+  isAdmin: computed.readOnly('sessionService.isAdmin'),
+
   queryParams: [
     'type',
     'search'
@@ -25,12 +27,13 @@ export default Ember.Controller.extend({
   jobsByType: computed('type', function() {
     var type = this.get('type');
     var model = this.get('model');
+
     if (type && !Ember.isBlank(type) && type !== "undefined") {
       return model.filterBy('type', type);
     } else {
       return model;
     }
-  }),
+  }).readOnly(),
 
   _filter() {
     var query = this.get('search');
@@ -42,7 +45,7 @@ export default Ember.Controller.extend({
     if (Ember.isBlank(query)) {
       result = model.toArray();
     } else {
-      result = model.filter(function(job) {
+      result = model.filter((job) => {
         return !query ||
           queryRegExp.test(job.get('title')) ||
           queryRegExp.test(job.get('description')) ||

@@ -1,18 +1,19 @@
 @import 'variables';
+
 footer {
   margin-top: 50px;
+
   p {
     text-align:center;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  left:10%;
-  bottom: 0;
-  height: 40px;
-  border-top: 1px solid $dark-splash;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    left:10%;
+    bottom: 0;
+    height: 40px;
+    border-top: 1px solid $dark-splash;
     line-height: 50px;
     font-size: 12px;
     color: $dark-splash;
   }
 }
-

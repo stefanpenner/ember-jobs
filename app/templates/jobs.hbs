@@ -2,7 +2,7 @@
   <div class='card job-posting small'>
     <div class='name-and-company'>
       {{#link-to 'job' job}}
-          {{job.title}}
+        {{job.title}}
       {{/link-to}}
       at {{job.company.name}}
     </div>
@@ -10,7 +10,7 @@
       {{job.location}}
     </div>
     <div class='posted-at'>
-      Posted:  {{ job.postedAt }}
+      Posted: {{job.postedAt}}
     </div>
     <div class='arrow'>
       {{#link-to 'job' job}}
