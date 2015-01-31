@@ -13,6 +13,7 @@ module('test app', {
   },
 
   teardown() {
+    server.shutdown();
     Ember.run(App, 'destroy');
   }
 });
@@ -25,24 +26,13 @@ function selectType(type) {
   // TODO: replace with testing select helper
   Ember.run(() => App.__container__.lookup('controller:index').set('type', type));
 }
-var i = 0;
-function job(attrs) {
-  return Ember.merge(JSON.parse(JSON.stringify({
-    id: i++,
-    live: true,
-    title: 'I am a job title',
-    location: 'Boston',
-    type: 'Full Time',
-    description: 'a cool job'
-  })), attrs);
-}
 
 test('searching', () => {
   server.get('/jobs', json(200, {
     jobs: [
-      job({ title: 'UI Engineer'     }),
-      job({ location: 'Palo Alto', title: 'UI Engineer'     }),
-      job({ location: 'Palo Alto', title: 'Backend Engineer'}),
+      { id: 1, live: true, title: 'UI Engineer'  },
+      { id: 2, live: true, location: 'Palo Alto' },
+      { id: 3, live: true, location: 'Palo Alto' }
     ]
   }));
 
@@ -54,7 +44,7 @@ test('searching', () => {
     equal(numberOfJobs(), 3, 'expected 3 jobs');
 
     fillIn($('#search-field'), 'UI').then(() => {
-      equal(numberOfJobs(), 2, 'expected 2 jobs');
+      equal(numberOfJobs(), 1, 'expected 2 jobs');
     });
 
     fillIn($('#search-field'), 'ASDFASDF').then(() => {
@@ -72,6 +62,19 @@ test('searching', () => {
 });
 
 test('searching - edge case', () => {
+  server.get('/jobs', json(200, {
+    jobs: [
+      { id: 1, live: true, title: 'UI Engineer',  type: 'Full Time' },
+      { id: 2, live: true, title: 'UI Engineer',  type: 'Full Time' },
+      { id: 3, live: true, location: 'Palo Alto', type: 'Full Time' },
+      { id: 4, live: true, location: 'Palo Alto', type: 'Part Time' }
+    ]
+  }));
+
+  server.get('/companies', json(200, {
+    companies: []
+  }));
+
   return visit('/').then(() => {
     equal(numberOfJobs(), 4, 'expected 3 jobs');
 
@@ -81,17 +84,48 @@ test('searching - edge case', () => {
 });
 
 test('searching - edge case - switch from Full Time to All Types', () => {
+  server.get('/jobs', json(200, {
+    jobs: [
+      { id: 1, live: true, title: 'UI Engineer',  company: 1, type: 'Full Time' },
+      { id: 3, live: true, location: 'Palo Alto', company: 3, type: 'Full Time' }
+    ]
+  }));
+
+  server.get('/companies', json(200, {
+    companies: [
+      { id: 1, name: 'yahoo'    },
+      { id: 3, name: 'netflix'  }
+    ]
+  }));
+
   return visit('/').then(() => {
     fillIn($('#search-field'), 'yahoo');
     fillIn('.ember-select', 'Full Time');
+
     andThen(() => equal(numberOfJobs(), 1, 'expected 1 job'));
 
     fillIn('.ember-select', 'All Job Types');
+
     andThen(() => equal(numberOfJobs(), 1, 'expected 1 job') );
   });
 });
 
 test('search by company name directly with query param in url', () => {
+
+  server.get('/jobs', json(200, {
+    jobs: [
+      { id: 1, live: true, title: 'UI Engineer',  company: 1, type: 'Full Time' },
+      { id: 2, live: true, title: 'UI Engineer',  company: 2, type: 'Full Time' }
+    ]
+  }));
+
+  server.get('/companies', json(200, {
+    companies: [
+      { id: 1, name: 'yahoo'    },
+      { id: 2, name: 'apple'    }
+    ]
+  }));
+
   return visit('/?search=yahoo').then(() => {
     equal(numberOfJobs(), 1, 'expected 1 job');
   });
