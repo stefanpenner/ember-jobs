@@ -8,10 +8,11 @@ function numberOfJobs() {
 }
 
 module('Acceptance: NewJob', {
-  setup: function() {
+  setup() {
     application = startApp();
   },
-  teardown: function() {
+
+  teardown() {
     Ember.run(application, 'destroy');
   }
 });

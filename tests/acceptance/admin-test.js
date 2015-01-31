@@ -3,7 +3,6 @@ import { test } from 'ember-qunit';
 import Ember from 'ember';
 import Pretender from 'pretender';
 import json from '../helpers/json';
-import factory from '../helpers/factory';
 
 var App, server;
 
@@ -21,19 +20,18 @@ module('admin', {
 test('non admin', () => {
   server.get('jobs', json(200, {
     jobs: [
-      factory({ live: true })
+      { id: 1, live: true }
     ]
   }));
 
 
   server.get('companies', json(200, {
     companies: [
-      factory()
+      { id: 1 }
     ]
   }));
 
-
-  return visit('/admin').then(() => {
+  visit('/admin').then(() => {
     equal(currentPath(), 'index');
   });
 });
@@ -47,17 +45,17 @@ test('admin', () => {
 
   server.get('jobs', json(200, {
     jobs: [
-      factory({ live: true })
+      { id: 1, live: true }
     ]
   }));
 
   server.get('companies', json(200, {
     companies: [
-      factory()
+      { id: 1 }
     ]
   }));
 
-  return visit('/admin').then(() => {
+  visit('/admin').then(() => {
     equal(currentPath(), 'admin.index');
   });
 });

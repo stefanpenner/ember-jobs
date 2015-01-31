@@ -40,7 +40,7 @@ test('searching', () => {
     companies: []
   }));
 
-  return visit('/').then(() => {
+  visit('/').then(() => {
     equal(numberOfJobs(), 3, 'expected 3 jobs');
 
     fillIn($('#search-field'), 'UI').then(() => {
@@ -55,7 +55,7 @@ test('searching', () => {
       equal(numberOfJobs(), 2, 'expected 2 jobs');
     });
 
-    return fillIn($('#search-field'), '').then(() => {
+    fillIn($('#search-field'), '').then(() => {
       equal(numberOfJobs(), 3, 'expected 3 jobs');
     });
   });
@@ -75,7 +75,7 @@ test('searching - edge case', () => {
     companies: []
   }));
 
-  return visit('/').then(() => {
+  visit('/').then(() => {
     equal(numberOfJobs(), 4, 'expected 3 jobs');
 
     selectType('Full Time');
@@ -93,12 +93,12 @@ test('searching - edge case - switch from Full Time to All Types', () => {
 
   server.get('/companies', json(200, {
     companies: [
-      { id: 1, name: 'yahoo'    },
-      { id: 3, name: 'netflix'  }
+      { id: 1, name: 'yahoo'   },
+      { id: 3, name: 'netflix' }
     ]
   }));
 
-  return visit('/').then(() => {
+  visit('/').then(() => {
     fillIn($('#search-field'), 'yahoo');
     fillIn('.ember-select', 'Full Time');
 
@@ -111,7 +111,6 @@ test('searching - edge case - switch from Full Time to All Types', () => {
 });
 
 test('search by company name directly with query param in url', () => {
-
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  company: 1, type: 'Full Time' },
@@ -121,12 +120,12 @@ test('search by company name directly with query param in url', () => {
 
   server.get('/companies', json(200, {
     companies: [
-      { id: 1, name: 'yahoo'    },
-      { id: 2, name: 'apple'    }
+      { id: 1, name: 'yahoo' },
+      { id: 2, name: 'apple' }
     ]
   }));
 
-  return visit('/?search=yahoo').then(() => {
+  visit('/?search=yahoo').then(() => {
     equal(numberOfJobs(), 1, 'expected 1 job');
   });
 });
