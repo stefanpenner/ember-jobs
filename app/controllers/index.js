@@ -38,14 +38,14 @@ export default Ember.Controller.extend({
   _filter() {
     var query = this.get('search');
     var queryRegExp = new RegExp(query, 'i');
-    var model = this.get('jobsByType');
+    var jobs = this.get('jobsByType');
     var filtered = this.get('filtered');
     var result;
 
     if (Ember.isBlank(query)) {
-      result = model.toArray();
+      result = jobs.toArray();
     } else {
-      result = model.filter((job) => {
+      result = jobs.filter((job) => {
         return !query ||
           queryRegExp.test(job.get('title')) ||
           queryRegExp.test(job.get('description')) ||

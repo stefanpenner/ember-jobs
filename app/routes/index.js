@@ -1,11 +1,15 @@
 import Ember from 'ember';
 
+var hash = Ember.RSVP.hash;
+
 export default Ember.Route.extend({
   model() {
-    return this.store.find('job');
-  },
+    var jobs      = this.store.find('job');
+    var companies = this.store.find('company');
 
-  afterModel() {
-    return this.store.find('company');
+    return hash({
+      jobs,
+      companies
+    }).then( (result) => result.jobs );
   }
 });

@@ -1,9 +1,21 @@
 <h1>Job</h1>
 
-<label>Title {{input value=job.title}}</label>
-<label>type {{input value=job.type}}</label>
-<label>description {{input value=job.description}}</label>
-<button {{action "save"}} {{bind-attr disabled=isSaving}}>
+<label name="title">
+  Title
+  {{input value=job.title}}
+</label>
+<label name="type">
+  type
+  {{input value=job.type}}
+</label>
+<label name="description">
+  description
+  {{input value=job.description}}
+</label>
+
+<button id="save"
+        {{action "save"}}
+        {{bind-attr disabled=isSaving}}>
   {{#if isSaving}}
     Saving
   {{else}}

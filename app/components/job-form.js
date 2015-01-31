@@ -10,13 +10,14 @@ export default Ember.Component.extend({
   actions: {
     save() {
       var jobAttributes = this.get('job');
-      jobAttributes.live = true;
+
       this.set('isSaving', true);
+
       this.store.createRecord('job', jobAttributes).save().
         finally(() => {
           this.set('isSaving', false);
           this.sendAction('jobCreated');
-      });
+        });
     }
   }
 });

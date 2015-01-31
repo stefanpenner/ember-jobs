@@ -12,6 +12,6 @@ export default Ember.Route.extend({
   },
 
   model() {
-    return this.store.find('job');
+    return this.store.all('job');
   }
 });
