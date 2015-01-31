@@ -15,7 +15,7 @@
     "emberfire": "~1.2.0",
     "spin.js": "~2.0.1",
     "ember-qunit-notifications": "0.0.5",
-    "pretender": "0.1.0"
+    "pretender": "0.6.0"
   },
   "resolutions": {
     "ember": "canary",
