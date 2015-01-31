@@ -3,6 +3,7 @@ import { test } from 'ember-qunit';
 import Ember from 'ember';
 import Pretender from 'pretender';
 import json from '../helpers/json';
+import text from '../helpers/text';
 
 var App, server;
 
@@ -11,11 +12,13 @@ module('test posting', {
     server = new Pretender();
     App = startApp();
   },
+
   teardown() {
     server.shutdown();
     Ember.run(App, 'destroy');
   }
 });
+
 
 test('searching', () => {
   server.get('/jobs', json(200, {
@@ -34,7 +37,7 @@ test('searching', () => {
 
   visit('/').then(() => {
     click('.job-posting:first a').then(() => {
-      equal($('.job-title').text(), 'UI Engineer at Yahoo');
+      equal(text('.job-title'), 'UI Engineer at Yahoo');
     });
   });
 });
