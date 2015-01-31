@@ -3,7 +3,7 @@
   "dependencies": {
     "handlebars": "~2.0.0",
     "jquery": "^1.11.1",
-    "ember-data": "1.0.0-beta.12",
+    "ember-data": "components/ember-data#3ef12202790df2f7b6af4d9eee7b351dc9493c86",
     "ember-resolver": "~0.1.11",
     "loader.js": "ember-cli/loader.js#1.0.1",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
@@ -19,7 +19,7 @@
   },
   "resolutions": {
     "ember": "canary",
-    "ember-data": "1.0.0-beta.12",
-    "qunit": "~1.15.0"
+    "qunit": "~1.15.0",
+    "ember-data": "3ef12202790df2f7b6af4d9eee7b351dc9493c86"
   }
 }
