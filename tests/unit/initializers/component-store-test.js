@@ -1,11 +1,11 @@
 import Ember from 'ember';
-import { initialize } from 'ember-jobs/initializers/store-component';
+import { initialize } from 'ember-jobs/initializers/component-store';
 
 var container, application;
 
 module('StoreComponentInitializer', {
-  setup: function() {
-    Ember.run(function() {
+  setup() {
+    Ember.run(() => {
       application = Ember.Application.create();
       container = application.__container__;
       application.deferReadiness();
@@ -20,4 +20,3 @@ test('it works', function() {
   // you would normally confirm the results of the initializer here
   ok(true);
 });
-
