@@ -1,5 +1,6 @@
 import startApp from '../helpers/start-app';
 import { test } from 'ember-qunit';
+import { module } from 'qunit';
 import Ember from 'ember';
 import Pretender from 'pretender';
 import json from '../helpers/json';
@@ -7,17 +8,20 @@ import json from '../helpers/json';
 var App, server;
 
 module('admin', {
-  setup() {
+  beforeEach() {
     server = new Pretender();
 
     App = startApp();
   },
-  teardown() {
+
+  afterEach() {
+    server.shutdown();
+
     Ember.run(App, 'destroy');
   }
 });
 
-test('non admin', () => {
+test('non admin', (assert) => {
   server.get('jobs', json(200, {
     jobs: [
       { id: 1, live: true }
@@ -31,8 +35,8 @@ test('non admin', () => {
     ]
   }));
 
-  visit('/admin').then(() => {
-    equal(currentPath(), 'index');
+  return visit('/admin').then(() => {
+    assert.equal(currentPath(), 'index');
   });
 });
 
@@ -40,7 +44,7 @@ function simulateAdmin() {
   App.__container__.lookup('service:session').set('isAdmin', true);
 }
 
-test('admin', () => {
+test('admin', (assert) => {
   simulateAdmin();
 
   server.get('jobs', json(200, {
@@ -55,8 +59,8 @@ test('admin', () => {
     ]
   }));
 
-  visit('/admin').then(() => {
-    equal(currentPath(), 'admin.index');
+  return visit('/admin').then(() => {
+    assert.equal(currentPath(), 'admin.index');
   });
 });
 

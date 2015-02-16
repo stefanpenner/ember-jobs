@@ -9,6 +9,6 @@ moduleFor('controller:job', 'JobController', {
 });
 
 // Replace this with your real tests.
-test('it exists', function() {
-  ok(this.subject());
+test('it exists', function(assert) {
+  assert.ok(this.subject());
 });

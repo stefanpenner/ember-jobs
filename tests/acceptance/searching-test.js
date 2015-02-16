@@ -1,5 +1,6 @@
 import startApp from '../helpers/start-app';
 import { test } from 'ember-qunit';
+import { module } from 'qunit';
 import Ember from 'ember';
 import Pretender from 'pretender';
 import json from '../helpers/json';
@@ -7,12 +8,12 @@ import json from '../helpers/json';
 var App, server;
 
 module('test app', {
-  setup() {
+  beforeEach() {
     server = new Pretender();
     App = startApp();
   },
 
-  teardown() {
+  afterEach() {
     server.shutdown();
     Ember.run(App, 'destroy');
   }
@@ -27,7 +28,7 @@ function selectType(type) {
   Ember.run(() => App.__container__.lookup('controller:index').set('type', type));
 }
 
-test('searching', () => {
+test('searching', (assert) => {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer'  },
@@ -40,28 +41,28 @@ test('searching', () => {
     companies: []
   }));
 
-  visit('/').then(() => {
-    equal(numberOfJobs(), 3, 'expected 3 jobs');
+  return visit('/').then(() => {
+    assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
 
     fillIn($('#search-field'), 'UI').then(() => {
-      equal(numberOfJobs(), 1, 'expected 2 jobs');
+      assert.equal(numberOfJobs(), 1, 'expected 1 jobs');
     });
 
     fillIn($('#search-field'), 'ASDFASDF').then(() => {
-      equal(numberOfJobs(), 0, 'expected 0 jobs');
+      assert.equal(numberOfJobs(), 0, 'expected 0 jobs');
     });
 
     fillIn($('#search-field'), 'Palo alto').then(() => {
-      equal(numberOfJobs(), 2, 'expected 2 jobs');
+      assert.equal(numberOfJobs(), 2, 'expected 2 jobs');
     });
 
-    fillIn($('#search-field'), '').then(() => {
-      equal(numberOfJobs(), 3, 'expected 3 jobs');
+    return fillIn($('#search-field'), '').then(() => {
+      assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
     });
   });
 });
 
-test('searching - edge case', () => {
+test('searching - edge case', (assert) => {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  type: 'Full Time' },
@@ -75,15 +76,15 @@ test('searching - edge case', () => {
     companies: []
   }));
 
-  visit('/').then(() => {
-    equal(numberOfJobs(), 4, 'expected 3 jobs');
+  return visit('/').then(() => {
+    assert.equal(numberOfJobs(), 4, 'expected 3 jobs');
 
     selectType('Full Time');
-    equal(numberOfJobs(), 3, 'expected 3 jobs');
+    assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
   });
 });
 
-test('searching - edge case - switch from Full Time to All Types', () => {
+test('searching - edge case - switch from Full Time to All Types', (assert) => {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  company: 1, type: 'Full Time' },
@@ -102,15 +103,15 @@ test('searching - edge case - switch from Full Time to All Types', () => {
     fillIn($('#search-field'), 'yahoo');
     fillIn('.ember-select', 'Full Time');
 
-    andThen(() => equal(numberOfJobs(), 1, 'expected 1 job'));
+    andThen(() => assert.equal(numberOfJobs(), 1, 'expected 1 job'));
 
     fillIn('.ember-select', 'All Job Types');
 
-    andThen(() => equal(numberOfJobs(), 1, 'expected 1 job') );
+    andThen(() => assert.equal(numberOfJobs(), 1, 'expected 1 job') );
   });
 });
 
-test('search by company name directly with query param in url', () => {
+test('search by company name directly with query param in url', (assert) => {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  company: 1, type: 'Full Time' },
@@ -126,6 +127,6 @@ test('search by company name directly with query param in url', () => {
   }));
 
   visit('/?search=yahoo').then(() => {
-    equal(numberOfJobs(), 1, 'expected 1 job');
+    assert.equal(numberOfJobs(), 1, 'expected 1 job');
   });
 });

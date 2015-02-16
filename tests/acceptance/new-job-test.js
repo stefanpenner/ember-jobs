@@ -3,6 +3,8 @@ import startApp from '../helpers/start-app';
 import Pretender from 'pretender';
 import json from '../helpers/json';
 import text from '../helpers/text';
+import { test } from 'ember-qunit';
+import { module } from 'qunit';
 
 var application, server;
 
@@ -11,23 +13,24 @@ function numberOfJobs() {
 }
 
 module('Acceptance: NewJob', {
-  setup() {
+  beforeEach() {
     server = new Pretender();
     application = startApp();
   },
 
-  teardown() {
+  afterEach() {
     server.shutdown();
+
     Ember.run(application, 'destroy');
   }
 });
 
-function isVisible(selector) {
-  ok($(selector).is(':visible'), 'expected `' + selector + '` to be visible');
+function isVisible(assert, selector) {
+  assert.ok($(selector).is(':visible'), 'expected `' + selector + '` to be visible');
 }
 
-function isNotVisible(selector) {
-  ok(!$(selector).is(':visible'), 'expected `' + selector + '` to NOT be visible');
+function isNotVisible(assert, selector) {
+  assert.ok(!$(selector).is(':visible'), 'expected `' + selector + '` to NOT be visible');
 }
 
 function numberOfJobs() {
@@ -35,21 +38,21 @@ function numberOfJobs() {
 }
 
 
-test('visiting / and opening/closing the  new job modal', function() {
+test('visiting / and opening/closing the  new job modal', (assert) => {
   server.get('/jobs',      json(200, { jobs:      [] }));
   server.get('/companies', json(200, { companies: [] }));
 
   visit('/');
   click('#post-job');
 
-  andThen(() => isVisible('.new-job-modal') );
+  andThen(() => isVisible(assert, '.new-job-modal') );
 
   click('.our-modal');
 
-  andThen(() => isNotVisible('.new-job-modal') );
+  andThen(() => isNotVisible(assert, '.new-job-modal') );
 });
 
-test('visiting / and adding a new job modal', function() {
+test('visiting / and adding a new job modal', (assert) => {
   server.get('/jobs',      json(200, { jobs:      [] }));
   server.get('/companies', json(200, { companies: [] }));
 
@@ -75,9 +78,9 @@ test('visiting / and adding a new job modal', function() {
   click('#post-job');
 
   andThen(() => {
-    equal(numberOfJobs(), 0, 'expected NO jobs');
+    assert.equal(numberOfJobs(), 0, 'expected NO jobs');
 
-    isVisible('.new-job-modal');
+    isVisible(assert, '.new-job-modal');
   });
 
   fillIn('label[name=title]       input', 'Cool Job');
@@ -87,7 +90,7 @@ test('visiting / and adding a new job modal', function() {
   click('#save');
 
   andThen(() => {
-    equal(numberOfJobs(), 1, 'expected one jobs');
-    equal(text('.job-posting:first .name-and-company'), 'Cool Job at Yahoo');
+    assert.equal(numberOfJobs(), 1, 'expected one jobs');
+    assert.equal(text('.job-posting:first .name-and-company'), 'Cool Job at Yahoo');
   });
 });

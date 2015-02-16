@@ -1,26 +1,26 @@
 import startApp from '../helpers/start-app';
 import { test } from 'ember-qunit';
-import Ember from 'ember';
+import { module } from 'qunit';
 import Pretender from 'pretender';
+import Ember from 'ember';
 import json from '../helpers/json';
 import text from '../helpers/text';
 
 var App, server;
 
 module('test posting', {
-  setup() {
+  beforeEach() {
     server = new Pretender();
     App = startApp();
   },
 
-  teardown() {
+  afterEach() {
     server.shutdown();
     Ember.run(App, 'destroy');
   }
 });
 
-
-test('searching', () => {
+test('searching', (assert) => {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, company: 1, title: 'UI Engineer'  },
@@ -37,7 +37,7 @@ test('searching', () => {
 
   visit('/').then(() => {
     click('.job-posting:first a').then(() => {
-      equal(text('.job-title'), 'UI Engineer at Yahoo');
+      assert.equal(text('.job-title'), 'UI Engineer at Yahoo');
     });
   });
 });

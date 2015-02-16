@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('our-modal', 'OurModalComponent', {
+moduleForComponent('job-form', 'JobFormComponent', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
 });
