@@ -4,18 +4,22 @@ import { module } from 'qunit';
 import Ember from 'ember';
 import Pretender from 'pretender';
 import json from '../helpers/json';
+import { stubResolver } from '../helpers/container';
 
-var App, server;
+var application, server;
 
 module('test app', {
   beforeEach() {
     server = new Pretender();
-    App = startApp();
+
+    application = startApp({ }, function(app) {
+      stubResolver(app, 'adapter:application', DS.RESTAdapter);
+    });
   },
 
   afterEach() {
     server.shutdown();
-    Ember.run(App, 'destroy');
+    Ember.run(application, 'destroy');
   }
 });
 
@@ -25,7 +29,7 @@ function numberOfJobs() {
 
 function selectType(type) {
   // TODO: replace with testing select helper
-  Ember.run(() => App.__container__.lookup('controller:index').set('type', type));
+  Ember.run(() => application.__container__.lookup('controller:index').set('type', type));
 }
 
 test('searching', (assert) => {

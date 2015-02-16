@@ -4,20 +4,22 @@ import { module } from 'qunit';
 import Ember from 'ember';
 import Pretender from 'pretender';
 import json from '../helpers/json';
+import { stubResolver } from '../helpers/container';
 
-var App, server;
+var application, server;
 
 module('admin', {
   beforeEach() {
     server = new Pretender();
-
-    App = startApp();
+    application = startApp({ }, function(app) {
+      stubResolver(app, 'adapter:application', DS.RESTAdapter);
+    });
   },
 
   afterEach() {
     server.shutdown();
 
-    Ember.run(App, 'destroy');
+    Ember.run(application, 'destroy');
   }
 });
 
@@ -41,7 +43,7 @@ test('non admin', (assert) => {
 });
 
 function simulateAdmin() {
-  App.__container__.lookup('service:session').set('isAdmin', true);
+  application.__container__.lookup('service:session').set('isAdmin', true);
 }
 
 test('admin', (assert) => {

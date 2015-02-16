@@ -5,6 +5,7 @@ import json from '../helpers/json';
 import text from '../helpers/text';
 import { test } from 'ember-qunit';
 import { module } from 'qunit';
+import { stubResolver } from '../helpers/container';
 
 var application, server;
 
@@ -15,7 +16,9 @@ function numberOfJobs() {
 module('Acceptance: NewJob', {
   beforeEach() {
     server = new Pretender();
-    application = startApp();
+    application = startApp({ }, function(app) {
+      stubResolver(app, 'adapter:application', DS.RESTAdapter);
+    });
   },
 
   afterEach() {

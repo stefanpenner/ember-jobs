@@ -7,11 +7,7 @@ import DS from 'ember-data';
 // soon, we wont need this.
 // resolve vs require ordering quirk (long running bug)
 
-function stubContainer(container, name, thing) {
-  container._registry._resolveCache[name] =  thing;
-}
-
-export default function startApp(attrs) {
+export default function startApp(attrs, cb) {
   var application;
 
   var attributes = Ember.merge({}, config.APP);
@@ -21,10 +17,9 @@ export default function startApp(attrs) {
     application = Application.extend({
       init() {
         this._super(...arguments);
-        // soon we will have a much more reasonable solution
-        stubContainer(this.__container__, 'adapter:application', DS.RESTAdapter);
+        if (typeof cb === 'function') { cb(this); }
       }
-    }, attributes).create();
+    }).create(attributes);
 
     application.setupForTesting();
     application.injectTestHelpers();

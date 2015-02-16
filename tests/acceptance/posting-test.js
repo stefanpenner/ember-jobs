@@ -5,18 +5,21 @@ import Pretender from 'pretender';
 import Ember from 'ember';
 import json from '../helpers/json';
 import text from '../helpers/text';
+import { stubResolver } from '../helpers/container';
 
-var App, server;
+var application, server;
 
 module('test posting', {
   beforeEach() {
     server = new Pretender();
-    App = startApp();
+    application = startApp({ }, function(app) {
+      stubResolver(app, 'adapter:application', DS.RESTAdapter);
+    });
   },
 
   afterEach() {
     server.shutdown();
-    Ember.run(App, 'destroy');
+    Ember.run(application, 'destroy');
   }
 });
 
