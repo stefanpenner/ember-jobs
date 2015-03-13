@@ -8,16 +8,17 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    save() {
+    async save() {
       var jobAttributes = this.get('job');
 
       this.set('isSaving', true);
 
-      this.store.createRecord('job', jobAttributes).save().
-        finally(() => {
-          this.set('isSaving', false);
-          this.sendAction('jobCreated');
-        });
+      try {
+        await this.store.createRecord('job', jobAttributes).save();
+      } finally {
+        this.set('isSaving', false);
+        this.sendAction('jobCreated');
+      }
     }
   }
 });

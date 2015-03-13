@@ -15,7 +15,7 @@
 
 <button id="save"
         {{action "save"}}
-        {{bind-attr disabled=isSaving}}>
+        disabled={{isSaving}}>
   {{#if isSaving}}
     Saving
   {{else}}

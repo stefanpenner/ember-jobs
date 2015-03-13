@@ -22,7 +22,7 @@ export default Ember.Component.extend({
       this.sendAction('cancel');
     },
 
-    save() {
+    async save() {
       var store = this.store;
       var companyAttributes = this.get('company');
       var jobAttributes = this.get('job');
@@ -30,12 +30,16 @@ export default Ember.Component.extend({
 
       this.set('isSaving', true);
 
-      company.save().then((company) => {
+      try {
+        var company = await company.save();
+
         jobAttributes.company = company;
         jobAttributes.live = true; // tmp
 
-        return store.createRecord('job', jobAttributes).save();
-      }).finally( () => this.set('isSaving', false) );
+        return await store.createRecord('job', jobAttributes).save();
+      } finally {
+        this.set('isSaving', false);
+      }
     }
   }
 });
