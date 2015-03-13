@@ -3,8 +3,7 @@ import startApp from '../helpers/start-app';
 import Pretender from 'pretender';
 import json from '../helpers/json';
 import text from '../helpers/text';
-import { test } from 'ember-qunit';
-import { module } from 'qunit';
+import { module, test } from 'qunit';
 import { stubResolver } from '../helpers/container';
 
 var application, server;
@@ -40,22 +39,21 @@ function numberOfJobs() {
   return Ember.$('.job-posting').length;
 }
 
-
-test('visiting / and opening/closing the  new job modal', (assert) => {
+test('visiting / and opening/closing the  new job modal', async function(assert) {
   server.get('/jobs',      json(200, { jobs:      [] }));
   server.get('/companies', json(200, { companies: [] }));
 
-  visit('/');
-  click('#post-job');
+  await visit('/');
+  await click('#post-job');
 
-  andThen(() => isVisible(assert, '.new-job-modal') );
+  isVisible(assert, '.new-job-modal');
 
-  click('.our-modal');
+  await click('.our-modal');
 
-  andThen(() => isNotVisible(assert, '.new-job-modal') );
+  isNotVisible(assert, '.new-job-modal');
 });
 
-test('visiting / and adding a new job modal', (assert) => {
+test('visiting / and adding a new job modal', async function(assert) {
   server.get('/jobs',      json(200, { jobs:      [] }));
   server.get('/companies', json(200, { companies: [] }));
 
@@ -77,23 +75,22 @@ test('visiting / and adding a new job modal', (assert) => {
     ]
   }));
 
-  visit('/');
-  click('#post-job');
+  await visit('/');
+  let pending = click('#post-job');
+  // check....
 
-  andThen(() => {
-    assert.equal(numberOfJobs(), 0, 'expected NO jobs');
+  await pending
 
-    isVisible(assert, '.new-job-modal');
-  });
+  assert.equal(numberOfJobs(), 0, 'expected NO jobs');
 
-  fillIn('label[name=title]       input', 'Cool Job');
-  fillIn('label[name=type]        input', 'Full Time');
-  fillIn('label[name=description] input', 'Job Description');
+  isVisible(assert, '.new-job-modal');
 
-  click('#save');
+  await fillIn('label[name=title]       input', 'Cool Job');
+  await fillIn('label[name=type]        input', 'Full Time');
+  await fillIn('label[name=description] input', 'Job Description');
 
-  andThen(() => {
-    assert.equal(numberOfJobs(), 1, 'expected one jobs');
-    assert.equal(text('.job-posting:first .name-and-company'), 'Cool Job at Yahoo');
-  });
+  await click('#save');
+
+  assert.equal(numberOfJobs(), 1, 'expected one jobs');
+  assert.equal(text('.job-posting:first .name-and-company'), 'Cool Job at Yahoo');
 });

@@ -1,6 +1,5 @@
 import startApp from '../helpers/start-app';
-import { test } from 'ember-qunit';
-import { module } from 'qunit';
+import { module, test } from 'qunit';
 import Pretender from 'pretender';
 import Ember from 'ember';
 import json from '../helpers/json';
@@ -23,7 +22,7 @@ module('test posting', {
   }
 });
 
-test('searching', (assert) => {
+test('searching', async function(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, company: 1, title: 'UI Engineer'  },
@@ -38,10 +37,9 @@ test('searching', (assert) => {
     ]
   }));
 
-  visit('/').then(() => {
-    click('.job-posting:first a').then(() => {
-      assert.equal(text('.job-title'), 'UI Engineer at Yahoo');
-    });
-  });
+  await visit('/');
+  await click('.job-posting:first a');
+
+  assert.equal(text('.job-title'), 'UI Engineer at Yahoo');
 });
 

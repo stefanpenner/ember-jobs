@@ -1,6 +1,5 @@
 import startApp from '../helpers/start-app';
-import { test } from 'ember-qunit';
-import { module } from 'qunit';
+import { module, test } from 'qunit';
 import Ember from 'ember';
 import Pretender from 'pretender';
 import json from '../helpers/json';
@@ -32,7 +31,7 @@ function selectType(type) {
   Ember.run(() => application.__container__.lookup('controller:index').set('type', type));
 }
 
-test('searching', (assert) => {
+test('searching', async function(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer'  },
@@ -45,28 +44,24 @@ test('searching', (assert) => {
     companies: []
   }));
 
-  return visit('/').then(() => {
-    assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
+  await visit('/');
+  debugger;
+  assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
 
-    fillIn($('#search-field'), 'UI').then(() => {
-      assert.equal(numberOfJobs(), 1, 'expected 1 jobs');
-    });
+  await fillIn($('#search-field'), 'UI');
+  assert.equal(numberOfJobs(), 1, 'expected 1 jobs');
 
-    fillIn($('#search-field'), 'ASDFASDF').then(() => {
-      assert.equal(numberOfJobs(), 0, 'expected 0 jobs');
-    });
+  await fillIn($('#search-field'), 'ASDFASDF');
+  assert.equal(numberOfJobs(), 0, 'expected 0 jobs');
 
-    fillIn($('#search-field'), 'Palo alto').then(() => {
-      assert.equal(numberOfJobs(), 2, 'expected 2 jobs');
-    });
+  await fillIn($('#search-field'), 'Palo alto');
+  assert.equal(numberOfJobs(), 2, 'expected 2 jobs');
 
-    return fillIn($('#search-field'), '').then(() => {
-      assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
-    });
-  });
+  await fillIn($('#search-field'), '');
+  assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
 });
 
-test('searching - edge case', (assert) => {
+test('searching - edge case', async function(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  type: 'Full Time' },
@@ -80,15 +75,14 @@ test('searching - edge case', (assert) => {
     companies: []
   }));
 
-  return visit('/').then(() => {
-    assert.equal(numberOfJobs(), 4, 'expected 3 jobs');
+  await visit('/');
+  assert.equal(numberOfJobs(), 4, 'expected 3 jobs');
 
-    selectType('Full Time');
-    assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
-  });
+  selectType('Full Time');
+  assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
 });
 
-test('searching - edge case - switch from Full Time to All Types', (assert) => {
+test('searching - edge case - switch from Full Time to All Types', async function(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  company: 1, type: 'Full Time' },
@@ -103,19 +97,18 @@ test('searching - edge case - switch from Full Time to All Types', (assert) => {
     ]
   }));
 
-  visit('/').then(() => {
-    fillIn($('#search-field'), 'yahoo');
-    fillIn('.ember-select', 'Full Time');
+  await visit('/');
+  await fillIn($('#search-field'), 'yahoo');
+  await fillIn('.ember-select', 'Full Time');
 
-    andThen(() => assert.equal(numberOfJobs(), 1, 'expected 1 job'));
+  assert.equal(numberOfJobs(), 1, 'expected 1 job');
 
-    fillIn('.ember-select', 'All Job Types');
+  await fillIn('.ember-select', 'All Job Types');
 
-    andThen(() => assert.equal(numberOfJobs(), 1, 'expected 1 job') );
-  });
+  assert.equal(numberOfJobs(), 1, 'expected 1 job');
 });
 
-test('search by company name directly with query param in url', (assert) => {
+test('search by company name directly with query param in url', async function(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  company: 1, type: 'Full Time' },
@@ -130,7 +123,6 @@ test('search by company name directly with query param in url', (assert) => {
     ]
   }));
 
-  visit('/?search=yahoo').then(() => {
-    assert.equal(numberOfJobs(), 1, 'expected 1 job');
-  });
+  await visit('/?search=yahoo');
+  assert.equal(numberOfJobs(), 1, 'expected 1 job');
 });
