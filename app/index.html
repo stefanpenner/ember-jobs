@@ -16,8 +16,11 @@
   </head>
   <body>
     {{content-for 'body'}}
-    <script type="text/javascript" charset="utf-8" src="runtime.js"> </script>
     <script src="assets/vendor.js"></script>
+    <script>
+      window.Promise = Ember.RSVP.Promise;
+    </script>
+    <script type="text/javascript" charset="utf-8" src="runtime.js"> </script>
     <script src="assets/ember-jobs.js"></script>
 
     {{content-for 'body-footer'}}
