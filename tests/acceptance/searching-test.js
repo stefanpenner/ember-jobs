@@ -26,11 +26,6 @@ function numberOfJobs() {
   return Ember.$('.job-posting').length;
 }
 
-function selectType(type) {
-  // TODO: replace with testing select helper
-  Ember.run(() => application.__container__.lookup('controller:index').set('type', type));
-}
-
 test('searching', async function(assert) {
   server.get('/jobs', json(200, {
     jobs: [
@@ -45,7 +40,6 @@ test('searching', async function(assert) {
   }));
 
   await visit('/');
-  debugger;
   assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
 
   await fillIn($('#search-field'), 'UI');
@@ -78,7 +72,7 @@ test('searching - edge case', async function(assert) {
   await visit('/');
   assert.equal(numberOfJobs(), 4, 'expected 3 jobs');
 
-  selectType('Full Time');
+  await fillIn('.job-type', 'Full Time');
   assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
 });
 
@@ -99,11 +93,11 @@ test('searching - edge case - switch from Full Time to All Types', async functio
 
   await visit('/');
   await fillIn($('#search-field'), 'yahoo');
-  await fillIn('.ember-select', 'Full Time');
+  await fillIn('.job-type', 'Full Time');
 
   assert.equal(numberOfJobs(), 1, 'expected 1 job');
 
-  await fillIn('.ember-select', 'All Job Types');
+  await fillIn('.job-type', 'All Job Types');
 
   assert.equal(numberOfJobs(), 1, 'expected 1 job');
 });

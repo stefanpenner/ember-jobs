@@ -8,8 +8,12 @@
             placeholder='Search jobs, companies or locations'}}
   </div>
   <div class='search-right'>
-    {{view 'select' content=types
-                    value=type
-                    prompt='All Job Types' class='job-type'}}
+    {{#x-select value=type action="typeChanged" class="job-type"}}
+      {{#each types as |type|}}
+        {{#x-option value=type}}
+          {{type}}
+        {{/x-option}}
+      {{/each}}
+    {{/x-select}}
   </div>
 </div>
