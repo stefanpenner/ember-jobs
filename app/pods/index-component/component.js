@@ -7,23 +7,14 @@ export default Ember.Component.extend({
   sessionService: inject.service('session'),
   isAdmin: computed.readOnly('sessionService.isAdmin'),
 
-  queryParams: [
-    'type',
-    'search'
-  ],
-
   types: [
     'Full Time',
     'Part Time'
   ],
 
-  init() {
-    this._super(...arguments);
-
-    this.search = null;
-  },
-
-  jobsByType: computed('type', 'search', 'model.@each.{title,description,type,location,company,name}', function() {
+  jobsByType: computed('type',
+                       'search',
+                       'model.@each.{title,description,type,location,company,name}', function() {
     var type = this.get('type');
     var model = this.get('model');
     var result = model;
@@ -60,7 +51,11 @@ export default Ember.Component.extend({
 
   actions: {
     jobTypeChanged(type) {
-      this.set('type', type);
+      this.sendAction('jobTypeChanged', type);
+    },
+
+    searchChanged(search) {
+      this.sendAction('searchChanged', search);
     }
   },
 });
