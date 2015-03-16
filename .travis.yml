@@ -18,7 +18,7 @@ before_install:
 
 install:
   - npm install
-  - ember install:bower
+  - ./node_modules/ember-cli/node_modules/.bin/bower install
 
 script:
   - npm test
