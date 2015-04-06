@@ -5,7 +5,8 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var app = new EmberApp({
   hinting: false,
   babel: {
-    experimental: true
+    nonStandard: false,
+    optional: ['es7.asyncFunctions']
   }
 });
 

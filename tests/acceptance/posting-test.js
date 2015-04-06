@@ -22,7 +22,7 @@ module('test posting', {
   }
 });
 
-test('searching', async function(assert) {
+test('searching', async function test(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, company: 1, title: 'UI Engineer'  },
