@@ -39,7 +39,7 @@ function numberOfJobs() {
   return Ember.$('.job-posting').length;
 }
 
-test('visiting / and opening/closing the  new job modal', async function(assert) {
+test('visiting / and opening/closing the  new job modal', async function test(assert) {
   server.get('/jobs',      json(200, { jobs:      [] }));
   server.get('/companies', json(200, { companies: [] }));
 
@@ -53,7 +53,7 @@ test('visiting / and opening/closing the  new job modal', async function(assert)
   isNotVisible(assert, '.new-job-modal');
 });
 
-test('visiting / and adding a new job modal', async function(assert) {
+test('visiting / and adding a new job modal', async function test(assert) {
   server.get('/jobs',      json(200, { jobs:      [] }));
   server.get('/companies', json(200, { companies: [] }));
 

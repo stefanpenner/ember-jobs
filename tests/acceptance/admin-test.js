@@ -22,7 +22,7 @@ module('admin', {
   }
 });
 
-test('non admin', async function(assert) {
+test('non admin', async function test(assert) {
   server.get('jobs', json(200, {
     jobs: [
       { id: 1, live: true }
@@ -44,7 +44,7 @@ function simulateAdmin() {
   application.__container__.lookup('service:session').set('isAdmin', true);
 }
 
-test('admin', async function(assert) {
+test('admin', async function test(assert) {
   simulateAdmin();
 
   server.get('jobs', json(200, {

@@ -26,7 +26,7 @@ function numberOfJobs() {
   return Ember.$('.job-posting').length;
 }
 
-test('searching', async function(assert) {
+test('searching', async function test(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer'  },
@@ -55,7 +55,7 @@ test('searching', async function(assert) {
   assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
 });
 
-test('searching - edge case', async function(assert) {
+test('searching - edge case', async function test(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  type: 'Full Time' },
@@ -76,7 +76,7 @@ test('searching - edge case', async function(assert) {
   assert.equal(numberOfJobs(), 3, 'expected 3 jobs');
 });
 
-test('searching - edge case - switch from Full Time to All Types', async function(assert) {
+test('searching - edge case - switch from Full Time to All Types', async function test(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  company: 1, type: 'Full Time' },
@@ -102,7 +102,7 @@ test('searching - edge case - switch from Full Time to All Types', async functio
   assert.equal(numberOfJobs(), 1, 'expected 1 job');
 });
 
-test('search by company name directly with query param in url', async function(assert) {
+test('search by company name directly with query param in url', async function test(assert) {
   server.get('/jobs', json(200, {
     jobs: [
       { id: 1, live: true, title: 'UI Engineer',  company: 1, type: 'Full Time' },
