@@ -6,6 +6,7 @@ module.exports = function(environment) {
     podModulePrefix: 'ember-jobs/pods',
     firebase: 'https://ember-jobs.firebaseio.com/',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' wss://*.firebaseio.com" },
     baseURL: '/',
     locationType: 'hash',
     EmberENV: {
