@@ -6,7 +6,10 @@ var app = new EmberApp({
   hinting: false,
   babel: {
     nonStandard: false,
-    optional: ['es7.asyncFunctions']
+    optional: [
+      'es7.asyncFunctions',
+      'es7.decorators'
+    ]
   }
 });
 

@@ -1,21 +1,20 @@
 import Ember from 'ember';
+import computed, { readOnly } from 'ember-computed-decorators';
 
-var computed = Ember.computed;
-var inject = Ember.inject;
+const { inject } = Ember;
 
 export default Ember.Component.extend({
   sessionService: inject.service('session'),
-  isAdmin: computed.readOnly('sessionService.isAdmin'),
 
   types: [
     'Full Time',
     'Part Time'
   ],
 
-  jobsByType: computed('type',
-                       'search',
-                       'model.@each.{title,description,type,location,company,name}', function() {
-    var type = this.get('type');
+
+  @computed('type', 'search', 'model.@each.{title,description,type,location,company,name}')
+  @readOnly
+  jobsByType(type, search) {
     var model = this.get('model');
     var result = model;
 
@@ -25,12 +24,12 @@ export default Ember.Component.extend({
 
     return result;
     return this._filter(result).filterBy('live');
-  }).readOnly(),
+  },
 
-  filteredJobs: computed('jobsByType.[]', function() {
+  @computed('jobsByType.[]')
+  filteredJobs(jobs) {
     var query = this.get('search');
     var queryRegExp = new RegExp(query, 'i');
-    var jobs = this.get('jobsByType');
     var result;
 
     if (Ember.isBlank(query)) {
@@ -47,7 +46,7 @@ export default Ember.Component.extend({
     }
 
     return result;
-  }).readOnly(),
+  },
 
   actions: {
     jobTypeChanged(type) {
