@@ -2,7 +2,8 @@
 language: node_js
 node_js:
   - "0.12"
-  - "iojs"
+
+sudo: false
 
 cache:
   directories:
@@ -14,8 +15,9 @@ before_install:
   - "npm install -g npm@^2"
 
 install:
+  - npm install -g bower
   - npm install
-  - ./node_modules/ember-cli/node_modules/.bin/bower install
+  - bower install
 
 script:
   - npm test

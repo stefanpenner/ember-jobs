@@ -11,9 +11,8 @@ export default Ember.Component.extend({
     'Part Time'
   ],
 
-
   @computed('type', 'search', 'model.@each.{title,description,type,location,company,name}')
-  @readOnly
+  //@readOnly TODO: fix ember-computed-decorators
   jobsByType(type, search) {
     var model = this.get('model');
     var result = model;
@@ -22,14 +21,14 @@ export default Ember.Component.extend({
       result = model.filterBy('type', type);
     }
 
-    return result;
-    return this._filter(result).filterBy('live');
+    return result.filterBy('live');
   },
 
   @computed('jobsByType.[]')
-  filteredJobs(jobs) {
+  filteredJobs() {
     var query = this.get('search');
     var queryRegExp = new RegExp(query, 'i');
+    var jobs = this.get('jobsByType')
     var result;
 
     if (Ember.isBlank(query)) {
