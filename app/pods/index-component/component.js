@@ -11,10 +11,9 @@ export default Ember.Component.extend({
     'Part Time'
   ],
 
-  @computed('type', 'search', 'model.@each.{title,description,type,location,company,name}')
+  @computed('type', 'search', 'attrs.model', 'attrs.model.@each.{title,description,type,location,company,name}')
   //@readOnly TODO: fix ember-computed-decorators
-  jobsByType(type, search) {
-    var model = this.get('model');
+  jobsByType(type, search, model) {
     var result = model;
 
     if (type && !Ember.isBlank(type) && type !== "undefined") {
